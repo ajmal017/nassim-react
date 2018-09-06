@@ -11,9 +11,9 @@
 ## Todos
 
 ### Setup
-- [x] Data model diagram
-- [x] Class diagram
-- [x] User flow diagram
+- [x] [Data model diagram]()
+- [x] [User flow and class diagrams]()
+- [x] [Partial mockups]()
 - [x] Create React app
 - [x] Install basic modules (react-dom, react-router-dom, dotenv)
 - [x] Set up general components (header, main, footer, home, landing)

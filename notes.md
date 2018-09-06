@@ -1,15 +1,15 @@
 # Notes
 
-## Wireframes
+## Mockups
 - [Market View grid view](https://wireframe.cc/6lapy6)
 - [Market View list view](https://wireframe.cc/8Wsa4O)
 
-## User Journeys
-- [Sign In and Sign Up](https://www.lucidchart.com/invitations/accept/dae4e0fd-db98-48dc-9092-f87c8990c82d)
-- [Buy and Sell](https://www.mindmeister.com/1142330199?t=X3o3zAO1xb)
+## User Flow and Class
+- [User Flow and Class Diagrams](https://www.lucidchart.com/invitations/accept/94fa62f7-98c3-4ac6-9b89-3476f125f7d2)
+- [Buy and Sell user flow mindmap](https://www.mindmeister.com/1142330199?t=X3o3zAO1xb)
 
 ## Data Model
-- [Data Model](https://www.lucidchart.com/invitations/accept/6ab09332-d4c5-4a83-97a5-d060cb08eeef)
+- [Data Model](https://www.lucidchart.com/invitations/accept/228165b2-1f93-43d5-a466-c63b4a65fcdf)
 
 ## Frontend AJAX Routes
 - DJI: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=DJI&interval=1min&apikey=IW8F5CSHHERNMNBG`
