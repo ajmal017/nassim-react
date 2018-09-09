@@ -12,31 +12,38 @@
 
 ## Todos
 
-### Setup
+### Planning
 - [ ] [Data model and data flow diagrams](https://www.lucidchart.com/invitations/accept/a3d05af8-7701-45f3-9d95-aea6e53bf1fe)
 	- [x] Data model
 	- [ ] Data flow
 - [x] [User flow and class diagrams](https://www.lucidchart.com/invitations/accept/b753933a-e61a-419a-bb17-512399382754) - click tabs on the bottom to toggle between user flow diagram and class diagram
+	- [x] [Buy and Sell mindmap](https://www.mindmeister.com/1142330199?t=X3o3zAO1xb)
 	- [x] Buy
 	- [x] Sell
 	- [x] Sign up
 	- [x] Sign in
 - [ ] Page mockups
-	- [x] [Market View grid view](https://wireframe.cc/6lapy6)
-	- [x] [Market View list view](https://wireframe.cc/8Wsa4O)
+	- [ ] Home
+	- [ ] Landing
+	- [x] Market View
+		- [x] [grid view](https://wireframe.cc/6lapy6)
+		- [x] [list view](https://wireframe.cc/8Wsa4O)
 	- [ ] [Stock]()
 	- [ ] [Transactions]()
 	- [ ] [Portfolio]()
 	- [ ] [Account]()
+
+### Setup
 - [x] Create React app
-- [x] Install basic modules
+- [x] Install npm modules
 	- [x] react-dom
 	- [x] react-router-dom
 	- [x] dotenv
-- [x] Set up general components 
+- [x] Set up common components 
 	- [x] Header
 	- [x] Main
 	- [x] Footer
+- [x] Set up generic pages
 	- [x] Home
 	- [x] Landing
 - [ ] Configure environment variables
@@ -46,11 +53,17 @@
 
 ### Develop
 #### Core Components
-- [ ] General (header, main, footer, home, landing)
+- [ ] General
+	- [ ] Header
+	- [ ] Main
+	- [ ] Footer
+- [ ] Home
+- [ ] Landing
 - [ ] Account
-	- [ ] User info
+	- [ ] Email
+	- [ ] Password
 	- [ ] Balance
-	- [ ] AssetsUnderManagement
+	- [ ] Assets
 - [ ] Stock
 	- [ ] Buy
 	- [ ] Sell
@@ -59,12 +72,8 @@
 #### Authentication
 - [ ] Sign up
 - [ ] Sign in
-- [ ] Google Sign-in
-- [ ] Facebook Sign-in
+- [ ] Google sign-in - [reference](https://developers.google.com/identity/sign-in/web/sign-in)
+- [ ] Facebook sign-in - [reference](https://developers.facebook.com/docs/facebook-login/web)
 
-### Deploy
-- [ ] Set up production database
-	- [ ] MongoDB Atlas
-	- [ ] Google Cloud Platform
-- [ ] Set up Travis CI
-- [ ] Set up Netlify
+### Notes
+- See [notes](https://github.com/elainechan/kurtosis-react/blob/master/notes.md) for external APIs and libraries.
