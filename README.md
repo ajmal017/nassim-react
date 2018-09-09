@@ -23,12 +23,13 @@
 	- [x] Sign up
 	- [x] Sign in
 - [ ] Page mockups
+	- [ ] [Header and Footer](https://wireframe.cc/)
 	- [ ] Home
 	- [ ] Landing
 	- [x] Market View
 		- [x] [grid view](https://wireframe.cc/6lapy6)
 		- [x] [list view](https://wireframe.cc/8Wsa4O)
-	- [ ] [Stock]()
+	- [x] [Stock](https://wireframe.cc/OLjSTq)
 	- [ ] [Transactions]()
 	- [ ] [Portfolio]()
 	- [ ] [Account]()
@@ -46,7 +47,6 @@
 - [x] Set up generic pages
 	- [x] Home
 	- [x] Landing
-- [ ] Configure environment variables
 - [ ] Set up MongoDB development database
 - [ ] Set up CSS library
 - [ ] Set up Enzyme for testing

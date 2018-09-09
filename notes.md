@@ -1,9 +1,9 @@
 # Notes
 
-## Frontend AJAX Routes
-- DJI: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=DJI&interval=1min&apikey=IW8F5CSHHERNMNBG`
-- SPX: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=SPX&interval=1min&apikey=IW8F5CSHHERNMNBG`
-- IWM: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IWM&interval=1min&apikey=IW8F5CSHHERNMNBG`
+## AJAX Routes
+- DJI: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=DJI&interval=1min&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`
+- SPX: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=SPX&interval=1min&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`
+- IWM: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IWM&interval=1min&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`
 - Most active: `https://api.iextrading.com/1.0/stock/market/list/mostactive`
 - Gainers: `https://api.iextrading.com/1.0/stock/market/list/gainers`
 - Losers: `https://api.iextrading.com/1.0/stock/market/list/losers`

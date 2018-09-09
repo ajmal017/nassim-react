@@ -3,6 +3,8 @@ import './App.css';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import Main from '../main/Main';
+import dotenv from 'dotenv';
+dotenv.config();
 
 class App extends Component {
   render() {
