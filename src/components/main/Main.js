@@ -4,6 +4,7 @@ import Home from '../home/Home';
 import Landing from '../landing/Landing';
 import Auth from '../auth/Auth';
 import About from '../about/About';
+import Account from '../account/Account';
 
 export default class Main extends React.Component {
 	render() {
@@ -13,6 +14,7 @@ export default class Main extends React.Component {
 				<Route path='/home' component={Home} />
 				<Route path='/auth' component={Auth} />
 				<Route path='/about' component={About} />
+				<Route path='/account' component={Account} />
 			</Switch>
 		)
 	}

@@ -14,16 +14,17 @@ export default class Login extends React.Component {
       password: ''
 		}
 	}
-	getEmailValidationState() {
+  getEmailValidationState() {
+    const emailLength = this.state.email.length;
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (re.test(String(this.state.email).toLowerCase())) return 'success';
-    return 'error';
+    else if (emailLength > 0) return 'error';
+    return null;
   }
 	getPasswordValidationState() {
-    const length = this.state.password.length;
-    if (length > 10) return 'success';
-    else if (length > 5) return 'warning';
-    else if (length > 0) return 'error';
+    const passwordLength = this.state.password.length;
+    if (passwordLength >= 8) return 'success';
+    else if (passwordLength > 0) return 'error';
     return null;
   }
   handleEmailChange(e) {
@@ -44,7 +45,7 @@ export default class Login extends React.Component {
             onChange={this.handleEmailChange} 
           />
           <FormControl.Feedback />
-          <HelpBlock>Validation is based on format.</HelpBlock> 
+          <HelpBlock>Please enter a valid email address.</HelpBlock> 
         </FormGroup> 
         <FormGroup controlId="formHorizontalPassword" validationState={this.getPasswordValidationState()} > 
           <ControlLabel>Password</ControlLabel> 
@@ -55,7 +56,7 @@ export default class Login extends React.Component {
             onChange={this.handlePasswordChange} 
           />
           <FormControl.Feedback />
-          <HelpBlock>Validation is based on string length.</HelpBlock> 
+          <HelpBlock>Passwords must be at least 8 characters.</HelpBlock> 
         </FormGroup>
       </form>
 		)

@@ -5,7 +5,7 @@
 - Frontend: React, Redux
 - Styling: [React-Bootstrap](https://react-bootstrap.github.io/)
 - Authentication: Google Sign-in, Facebook Sign-in
-- Backend: Node
+- Backend: [Kurtosis API](https://github.com/elainechan/kurtosis-api)
 - Database: MongoDB Atlas, Google Cloud
 - Deployment: Heroku, Netlify, Travis CI
 - Testing: Enzyme
@@ -47,19 +47,19 @@
 - [x] Set up generic pages
 	- [x] Home
 	- [x] Landing
-	- [ ] About
+	- [x] About
 - [x] Set up CSS library
 - [ ] Set up Enzyme for testing
 
 ### Develop
 #### Core Components
+- [x] Auth
+	- [x] Register
+	- [x] Login
 - [ ] General
 	- [ ] Header
 	- [ ] Main
 	- [ ] Footer
-- [x] Auth
-	- [x] Register
-	- [x] Login
 - [ ] Home
 - [ ] Landing
 - [ ] Account
@@ -77,6 +77,8 @@
 - [ ] Sign in
 - [ ] Google sign-in - [reference](https://developers.google.com/identity/sign-in/web/sign-in)
 - [ ] Facebook sign-in - [reference](https://developers.facebook.com/docs/facebook-login/web)
+- [ ] GitHub sign-in
+- [ ] LinkedIn sign-in
 
 ### Notes
 - See [notes](https://github.com/elainechan/kurtosis-react/blob/master/notes.md) for external APIs and libraries.
