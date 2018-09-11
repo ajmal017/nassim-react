@@ -9,6 +9,11 @@
 - Losers: `https://api.iextrading.com/1.0/stock/market/list/losers`
 - Profile batch: `https://api.iextrading.com/1.0/stock/aapl/batch?types=price,quote,news,earnings,stats,chart&range=1m&last=10`
 
+## UML Diagram Libraries
+- [bpmn.io](https://bpmn.io/)
+- [diagram-js](https://www.npmjs.com/package/diagram-js)
+- [bpmn-js](https://github.com/bpmn-io/bpmn-js)
+
 ## CSS Libraries
 ### React-specific npm packages
 - [Bootstrap React]()
