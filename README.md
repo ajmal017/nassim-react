@@ -1,9 +1,9 @@
 # Kurtosis React Frontend
-- Frontend for a mock stock trading app.
+- Frontend for a stock trading app.
 
 ## Stack
 - Frontend: React, Redux
-- Styling: Bootstrap, SCSS, Sass
+- Styling: [React-Bootstrap](https://react-bootstrap.github.io/)
 - Authentication: Google Sign-in, Facebook Sign-in
 - Backend: Node
 - Database: MongoDB Atlas, Google Cloud
@@ -47,8 +47,8 @@
 - [x] Set up generic pages
 	- [x] Home
 	- [x] Landing
-- [ ] Set up MongoDB development database
-- [ ] Set up CSS library
+	- [ ] About
+- [x] Set up CSS library
 - [ ] Set up Enzyme for testing
 
 ### Develop
@@ -57,6 +57,9 @@
 	- [ ] Header
 	- [ ] Main
 	- [ ] Footer
+- [x] Auth
+	- [x] Register
+	- [x] Login
 - [ ] Home
 - [ ] Landing
 - [ ] Account
@@ -69,7 +72,7 @@
 	- [ ] Sell
 - [ ] Portfolio
 - [ ] Transaction
-#### Authentication
+#### Authentication Flow
 - [ ] Sign up
 - [ ] Sign in
 - [ ] Google sign-in - [reference](https://developers.google.com/identity/sign-in/web/sign-in)
