@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
+import { Button, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 
 export default class Login extends React.Component {
 	constructor(props) {
@@ -7,7 +7,8 @@ export default class Login extends React.Component {
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.getEmailValidationState = this.getEmailValidationState.bind(this);
-		this.getPasswordValidationState = this.getPasswordValidationState.bind(this);
+    this.getPasswordValidationState = this.getPasswordValidationState.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 		this.state = {
 			show: false,
       email: '',
@@ -33,10 +34,14 @@ export default class Login extends React.Component {
   handlePasswordChange(e) {
     this.setState({ password: e.target.value });
   }
+  handleSubmit() {
+    console.log(this.state); // more later with AJAX and Redux
+  }
+  // After successful Login, hide Login and Register, show My Account
 	render() {
 		return(
-			<form> 
-        <FormGroup controlId="formHorizontalEmail" validationState={this.getEmailValidationState()} > 
+			<form onSubmit={this.handleSubmit}> 
+        <FormGroup controlId="formHorizontalLoginEmail" validationState={this.getEmailValidationState()} > 
           <ControlLabel>Email</ControlLabel> 
           <FormControl
             type="email"
@@ -47,7 +52,7 @@ export default class Login extends React.Component {
           <FormControl.Feedback />
           <HelpBlock>Please enter a valid email address.</HelpBlock> 
         </FormGroup> 
-        <FormGroup controlId="formHorizontalPassword" validationState={this.getPasswordValidationState()} > 
+        <FormGroup controlId="formHorizontalLoginPassword" validationState={this.getPasswordValidationState()} > 
           <ControlLabel>Password</ControlLabel> 
           <FormControl
             type="password"
@@ -58,6 +63,7 @@ export default class Login extends React.Component {
           <FormControl.Feedback />
           <HelpBlock>Passwords must be at least 8 characters.</HelpBlock> 
         </FormGroup>
+        <Button type="submit">Log In</Button>
       </form>
 		)
 	}

@@ -31,9 +31,16 @@ export default class Auth extends React.Component {
         <Button
           bsStyle="primary"
           bsSize="large"
-          onClick={() => this.setState({ show: true })}
+          onClick={() => this.setState({ show: true, key: 1 })}
         >
-          Register / Log In
+          Register
+        </Button>
+        <Button
+          bsStyle="primary"
+          bsSize="large"
+          onClick={() => this.setState({ show: true, key: 2 })}
+        >
+          Log In
         </Button>
         <Modal
           show={this.state.show}
@@ -70,3 +77,5 @@ export default class Auth extends React.Component {
     );
   }
 }
+// two buttons: Register, Log In
+// Register:  active key
