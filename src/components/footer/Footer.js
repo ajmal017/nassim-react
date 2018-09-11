@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Footer extends React.Component {
 	render() {
 		return (
 		<div>
 			<ul>
-				<li><a>About</a></li>
+				<li><Link to='/about'>About</Link></li>
 			</ul>
 		</div>
 		)

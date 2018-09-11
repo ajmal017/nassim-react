@@ -23,7 +23,7 @@
 	- [x] Sign up
 	- [x] Sign in
 - [ ] Page mockups
-	- [ ] [Header and Footer](https://wireframe.cc/)
+	- [ ] [Header and Footer]()
 	- [ ] Home
 	- [ ] Landing
 	- [x] Market View
