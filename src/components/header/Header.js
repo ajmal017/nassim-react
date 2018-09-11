@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import Auth from '../auth/Auth';
 
 export default class Header extends React.Component {
 	render() {
@@ -17,6 +18,7 @@ export default class Header extends React.Component {
 				<li>
 					<Link to='/account'>My Account</Link>
 				</li>
+				<Auth />
 			</ul>
 		</div>
 		)
