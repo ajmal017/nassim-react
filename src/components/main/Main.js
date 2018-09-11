@@ -5,6 +5,7 @@ import Landing from '../landing/Landing';
 import Auth from '../auth/Auth';
 import About from '../about/About';
 import Account from '../account/Account';
+import Transaction from '../transaction/Transaction';
 
 export default class Main extends React.Component {
 	render() {
