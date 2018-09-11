@@ -6,8 +6,8 @@ import { Button, Modal, Tabs, Tab, TabContainer, TabContent, TabPane } from 'rea
 export default class Auth extends React.Component {
 	constructor(props, context) {
     super(props, context);
-
-    this.handleSelect = this.handleSelect.bind(this);
+		this.handleHide = this.handleHide.bind(this);
+		this.handleSelect = this.handleSelect.bind(this);
 
     this.state = {
       key: 1
@@ -17,11 +17,11 @@ export default class Auth extends React.Component {
 	handleHide() {
 		this.setState({
 			show: false
-		})
+		});
   }
 	// Tabs
   handleSelect(key) {
-    alert(`selected ${key}`);
+    console.log(`selected ${key}`);
     this.setState({ key });
   }
 
@@ -33,7 +33,7 @@ export default class Auth extends React.Component {
           bsSize="large"
           onClick={() => this.setState({ show: true })}
         >
-          Register/Log in
+          Register / Log In
         </Button>
         <Modal
           show={this.state.show}
@@ -43,7 +43,6 @@ export default class Auth extends React.Component {
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title">
-              Modal Title
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -53,10 +52,10 @@ export default class Auth extends React.Component {
 							onSelect={this.handleSelect}
 							id="controlled-tab-example"
 						>
-							<Tab eventKey={1} title="Tab 1">
+							<Tab eventKey={1} title="Register">
 								<Register />
 							</Tab>
-							<Tab eventKey={2} title="Tab 2">
+							<Tab eventKey={2} title="Log In">
 								<Login />
 							</Tab>
 						</Tabs>
