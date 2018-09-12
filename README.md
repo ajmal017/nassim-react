@@ -89,4 +89,4 @@
 - [ ] LinkedIn sign-in
 
 ### Notes
-- See [notes](https://github.com/elainechan/kurtosis-react/blob/master/notes.md) for external APIs and libraries.
+- See [notes](https://github.com/elainechan/nassim-react/blob/master/notes.md) for external APIs and libraries.

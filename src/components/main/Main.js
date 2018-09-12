@@ -6,6 +6,7 @@ import Auth from '../auth/Auth';
 import About from '../about/About';
 import Account from '../account/Account';
 import Transaction from '../transaction/Transaction';
+import Portfolio from '../portfolio/Portfolio';
 
 export default class Main extends React.Component {
 	render() {
@@ -17,6 +18,7 @@ export default class Main extends React.Component {
 				<Route path='/about' component={About} />
 				<Route path='/account' component={Account} />
 				<Route path='/transaction' component={Transaction} />
+				<Route path='/portfolio' component={Portfolio} />
 			</Switch>
 		)
 	}
