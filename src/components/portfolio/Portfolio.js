@@ -3,20 +3,27 @@ import React from 'react';
 export default class Portfolio extends React.Component {
 	constructor(props) {
 		super(props)
-		const date = new Date();
+		const currentDate = new Date();
+		const dayAgo = new Date(new Date().setDate(currentDate.getDate() - 1));
+		const weekAgo = new Date(new Date().setDate(currentDate.getDate() - 7));
+		const monthAgo = new Date(new Date().setDate(currentDate.getDate() - 30));
 		this.state = {
-			currentDate: 'Tue Sep 11 2018 23:34:31 GMT-0400 (Eastern Daylight Time)', // date.toDateString()
+			currentDate: currentDate.toString(),
 			value: 1000000,
-			compareToDate: 'Sun Aug 12 2018 23:30:58 GMT-0400 (Eastern Daylight Time)'// (new Date(date.setDate(date.getDate() - 30))).toDateString()
+			dayAgo: dayAgo.toString(),
+			weekAgo: weekAgo.toString(),
+			monthAgo: monthAgo.toString()
 		}
 	}
 	render() {
 		return(
 			<div>
 			<h1>Portfolio</h1>
-			<p>Current Date: {this.state.currentDate}</p>
-			<p>Compare to Date: {this.state.compareToDate}</p>
 			<p>Value: ${this.state.value}</p>
+			<p>Current Date: {this.state.currentDate}</p>
+			<p>Day Ago: {this.state.dayAgo}</p>
+			<p>Week Ago: {this.state.weekAgo}</p>
+			<p>Month Ago: {this.state.monthAgo}</p>
 			</div>
 		)
 	}
