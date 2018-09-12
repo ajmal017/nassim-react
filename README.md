@@ -1,6 +1,6 @@
 # Nassim React Frontend
 - Frontend for a stock trading app.
-- See [repo](https://elainechan.github.io/nassim-react/) for code.
+- See [repo](https://github.com/elainechan/nassim-react) for code.
 - See [Nassim API](https://github.com/elainechan/nassim-api) for backend.
 
 ## Stack

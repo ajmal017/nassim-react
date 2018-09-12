@@ -15,7 +15,7 @@ export default class Stock extends React.Component {
 		return (
 			<div>
 				<h1>Stock</h1>
-				<p>Price: ${this.state.price}</p>
+				<p>Price: ${this.state.price} (currency format)</p>
 				<p>Current Date: {this.state.date}</p>
 				<p></p>
 			</div>

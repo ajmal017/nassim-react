@@ -19,7 +19,7 @@ export default class Portfolio extends React.Component {
 		return(
 			<div>
 			<h1>Portfolio</h1>
-			<p>Value: ${this.state.value}</p>
+			<p>Value: ${this.state.value} (currency format)</p>
 			<p>Current Date: {this.state.currentDate}</p>
 			<p>Day Ago: {this.state.dayAgo}</p>
 			<p>Week Ago: {this.state.weekAgo}</p>
