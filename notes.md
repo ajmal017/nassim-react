@@ -14,6 +14,10 @@
 - [diagram-js](https://www.npmjs.com/package/diagram-js)
 - [bpmn-js](https://github.com/bpmn-io/bpmn-js)
 
+## Charting Libraries
+- [react-vis](https://github.com/uber/react-vis)
+- [react-chartjs-2](https://github.com/jerairrest/react-chartjs-2)
+
 ## CSS Libraries
 ### React-specific npm packages
 - [Bootstrap React]()
