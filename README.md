@@ -1,13 +1,13 @@
 # Nassim React Frontend
 - Frontend for a stock trading app.
 
-## Develop data in component (see Transaction example)
-1.- Do everything with fake data in JSX
-2.- Create an object with fake data in state and overwrite all the fake data with the state
-3.- Refactor all in different components - break down to smaller components
+## Developing data in component (see `Transaction` example)
+1. Do everything with fake data in JSX
+2. Create an object with fake data in state and overwrite all the fake data with the state
+3. Refactor all in different components - break down to smaller components
 4. Call external API
 	- `ComponentDidMount()`
-	- `this.setState` the call result
+	- `this.setState()` with the call result
 
 ## Stack
 - Frontend: React, Redux
@@ -18,9 +18,7 @@
 - Deployment: Heroku, Netlify, Travis CI
 - Testing: Enzyme
 
-## Todos
-
-### Planning
+## Planning
 - [ ] [Data model and data flow diagrams](https://www.lucidchart.com/invitations/accept/a3d05af8-7701-45f3-9d95-aea6e53bf1fe)
 	- [x] Data model
 	- [ ] Data flow
@@ -42,7 +40,7 @@
 	- [ ] [Portfolio]()
 	- [ ] [Account]()
 
-### Setup
+## Setup
 - [x] Create React app
 - [x] Install npm modules
 	- [x] react-dom
@@ -59,15 +57,15 @@
 - [x] Set up CSS library
 - [ ] Set up Enzyme for testing
 
-### Develop
-#### Core Components
+## Wireframe
+### Core Components
 - [x] Auth
 	- [x] Register
 	- [x] Login
-- [ ] General
-	- [ ] Header
-	- [ ] Main
-	- [ ] Footer
+- [x] General
+	- [x] Header
+	- [x] Main
+	- [x] Footer
 - [ ] Home
 - [ ] Landing
 - [ ] Account
@@ -80,13 +78,15 @@
 	- [ ] Sell
 - [ ] Portfolio
 - [ ] Transaction
-#### Authentication Flow
-- [ ] Sign up
-- [ ] Sign in
+### Authentication
+- [x] Sign up
+- [x] Sign in
 - [ ] Google sign-in - [reference](https://developers.google.com/identity/sign-in/web/sign-in)
 - [ ] Facebook sign-in - [reference](https://developers.facebook.com/docs/facebook-login/web)
 - [ ] GitHub sign-in
 - [ ] LinkedIn sign-in
+
+
 
 ### Notes
 - See [notes](https://github.com/elainechan/nassim-react/blob/master/notes.md) for external APIs and libraries.

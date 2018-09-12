@@ -4,7 +4,7 @@ export default class Landing extends React.Component {
 	render() {
 		return (
 			<div>
-				<p>Landing</p>
+				<h1>Landing</h1>
 			</div>
 		)
 	}

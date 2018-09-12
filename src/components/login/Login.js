@@ -35,7 +35,7 @@ export default class Login extends React.Component {
     this.setState({ password: e.target.value });
   }
   handleSubmit() {
-    console.log(this.state); // more later with AJAX and Redux
+    alert(this.state); // more later with AJAX and Redux
   }
   // After successful Login, hide Login and Register, show My Account
 	render() {

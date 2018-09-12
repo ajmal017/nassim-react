@@ -9,7 +9,6 @@ export default class Account extends React.Component {
 			<p>Password</p>
 			<p>Cash</p>
 			<p>Assets</p>
-			<p>Transactions</p>
 			</div>
 		)
 	}

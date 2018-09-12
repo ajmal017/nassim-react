@@ -5,7 +5,7 @@ import Landing from '../landing/Landing';
 import Auth from '../auth/Auth';
 import About from '../about/About';
 import Account from '../account/Account';
-import Transaction from '../transaction/Transaction';
+import TransactionContainer from '../transaction-container/TransactionContainer';
 import Portfolio from '../portfolio/Portfolio';
 import Stock from '../stock/Stock';
 
@@ -18,7 +18,7 @@ export default class Main extends React.Component {
 				<Route path='/auth' component={Auth} />
 				<Route path='/about' component={About} />
 				<Route path='/account' component={Account} />
-				<Route path='/transaction' component={Transaction} />
+				<Route path='/transactions' component={TransactionContainer} />
 				<Route path='/portfolio' component={Portfolio} />
 				<Route path='/stock' component={Stock}/>
 			</Switch>
