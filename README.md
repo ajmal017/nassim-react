@@ -1,11 +1,19 @@
-# Kurtosis React Frontend
+# Nassim React Frontend
 - Frontend for a stock trading app.
+
+## Develop data in component (see Transaction example)
+1.- Do everything with fake data in JSX
+2.- Create an object with fake data in state and overwrite all the fake data with the state
+3.- Refactor all in different components - break down to smaller components
+4. Call external API
+	- `ComponentDidMount()`
+	- `this.setState` the call result
 
 ## Stack
 - Frontend: React, Redux
 - Styling: [React-Bootstrap](https://react-bootstrap.github.io/)
 - Authentication: Google Sign-in, Facebook Sign-in
-- Backend: [Kurtosis API](https://github.com/elainechan/kurtosis-api)
+- Backend: [Nassim API](https://github.com/elainechan/nassim-api)
 - Database: MongoDB Atlas, Google Cloud
 - Deployment: Heroku, Netlify, Travis CI
 - Testing: Enzyme

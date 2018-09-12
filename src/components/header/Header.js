@@ -7,7 +7,7 @@ export default class Header extends React.Component {
 	render() {
 		return (
 		<div>
-			<h1>Kurtosis</h1>
+			<h1>Nassim</h1>
 			<ul>
 				<li>
 					<Link to='/'>Landing</Link>
