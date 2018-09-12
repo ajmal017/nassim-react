@@ -1,13 +1,7 @@
 # Nassim React Frontend
 - Frontend for a stock trading app.
-
-## Developing data in component (see `Transaction` example)
-1. Do everything with fake data in JSX
-2. Create an object with fake data in state and overwrite all the fake data with the state
-3. Refactor all in different components - break down to smaller components
-4. Call external API
-	- `ComponentDidMount()`
-	- `this.setState()` with the call result
+- See [repo](https://elainechan.github.io/nassim-react/) for code.
+- See [Nassim API](https://github.com/elainechan/nassim-api) for backend.
 
 ## Stack
 - Frontend: React, Redux
