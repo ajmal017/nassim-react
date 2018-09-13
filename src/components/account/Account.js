@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 export default class Account extends React.Component {
 	constructor(props) {
@@ -9,7 +10,17 @@ export default class Account extends React.Component {
 			cash: 100000,
 			assets: 200000
 		}
+		axios.get('http://localhost:8080/account/auth-google')
+  		.then(function (response) {
+    	// handle success
+    	console.log(response);
+  		})
+  		.catch(function (error) {
+    	// handle error
+    		console.log(error);
+  		})
 	}
+
 	render() {
 		return (
 			<div>
