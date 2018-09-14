@@ -6,7 +6,7 @@
 ## Stack
 - Frontend: React, Redux
 - Styling: [React-Bootstrap](https://react-bootstrap.github.io/)
-- Authentication: Google Sign-in, Facebook Sign-in
+- Authentication: [Passport.js](https://github.com/jaredhanson/passport), Google Sign-in, Facebook Sign-in
 - Backend: [Nassim API](https://github.com/elainechan/nassim-api)
 - Database: MongoDB Atlas, Google Cloud
 - Deployment: Heroku, Netlify, Travis CI

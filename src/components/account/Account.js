@@ -10,10 +10,13 @@ export default class Account extends React.Component {
 			cash: 100000,
 			assets: 200000
 		}
-		axios.get('http://localhost:8080/account/auth-google')
+		// (note 1) http request to backend account.controller
+		// GET always call backend route
+		axios.get('http://localhost:8080/account/auth/google')
   		.then(function (response) {
-    	// handle success
-    	console.log(response);
+			// handle success
+				//window.location.href = 'http://localhost'
+    		console.log(response);
   		})
   		.catch(function (error) {
     	// handle error
