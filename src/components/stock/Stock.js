@@ -10,14 +10,13 @@ export default class Stock extends React.Component {
 		this.handleSell = this.handleSell.bind(this);
 
 		const currentDate = new Date();
-
 		this.state = {
+			date: currentDate.toString(),
+			transactionType: '',
 			symbol: 'AAPL', // TODO: should receive this value from Home component
 			name: '',
-			date: currentDate.toString(),
 			price: '', // TODO: display 2-decimal-point float in render
 			quantity: '',
-			transactionType: '',
 			totalValue: ''
 		}
 
@@ -46,13 +45,30 @@ export default class Stock extends React.Component {
 	handleSell(e) {
 		e.preventDefault();
 		alert(`Sell ${this.state.quantity} shares of ${this.state.symbol}`);
-		// axios.post()
+		axios.post('/all', {
+			date: this.state.date,
+			type: 'sell',
+			symbol: this.state.symbol,
+			name: this.state.name,
+			price: this.state.price,
+			quantity: this.state.quantity,
+			totalValue: this.state.totalValue
+		});
 	}
 	handleBuy(e) {
 		e.preventDefault();
 		alert(`Buy ${this.state.quantity} shares of ${this.state.symbol}`);
-		// axios.post()
+		axios.post('/all', {
+			date: this.state.date,
+			type: 'buy',
+			symbol: this.state.symbol,
+			name: this.state.name,
+			price: this.state.price,
+			quantity: this.state.quantity,
+			totalValue: this.state.totalValue
+		});
 	}
+}
 
 	render() {
 		return (
