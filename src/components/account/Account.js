@@ -13,12 +13,12 @@ export default class Account extends React.Component {
 		// (note 1) http request to backend account.controller
 		// GET always call backend route
 		axios.get('http://localhost:8080/account/auth/google')
-  		.then(function (response) {
+  		.then(response => {
 			// handle success
 				//window.location.href = 'http://localhost'
     		console.log(response);
   		})
-  		.catch(function (error) {
+  		.catch(error => {
     	// handle error
     		console.log(error);
   		})

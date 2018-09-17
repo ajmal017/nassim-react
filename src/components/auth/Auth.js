@@ -1,7 +1,7 @@
 import React from 'react';
 import Register from '../register/Register';
 import Login from '../login/Login';
-import { Button, Modal, Tabs, Tab, TabContainer, TabContent, TabPane } from 'react-bootstrap';
+import { Button, Modal, Tabs, Tab } from 'react-bootstrap';
 
 export default class Auth extends React.Component {
 	constructor(props, context) {
