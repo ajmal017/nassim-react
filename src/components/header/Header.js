@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import Auth from '../auth/Auth';
+import Search from '../search/Search';
 
 export default class Header extends React.Component {
 	render() {
@@ -23,6 +24,7 @@ export default class Header extends React.Component {
 				</li>
 				<Auth />
 			</ul>
+			<Search />
 		</div>
 		)
 	}

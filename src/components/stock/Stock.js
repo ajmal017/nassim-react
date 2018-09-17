@@ -13,7 +13,7 @@ export default class Stock extends React.Component {
 		this.state = {
 			date: currentDate.toString(),
 			transactionType: '',
-			symbol: 'AAPL', // TODO: should receive this value from Home component
+			symbol: 'AAPL', // TODO: should receive this value from Search component
 			name: '',
 			price: '', // TODO: display 2-decimal-point float in render
 			quantity: '',
