@@ -8,11 +8,7 @@ export default class Stock extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.handleBuy = this.handleBuy.bind(this);
 		this.handleSell = this.handleSell.bind(this);
-		// this.handleBuyIntention = this.handleBuyIntention.bind(this);
-		// this.handleSellIntention = this.handleSellIntention.bind(this);
-		// this.handleReview = this.handleReview.bind(this);
-		// this.handleEdit = this.handleEdit.bind(this);
-		// this.handleFinalSubmit = this.handleFinalSubmit.bind(this);
+
 		const currentDate = new Date();
 
 		this.state = {
@@ -43,17 +39,6 @@ export default class Stock extends React.Component {
 				return
 			});
 	}
-	// submit Buy/Sell intention
-	// Edit 
-		// hide Buy button, hide Sell button
-		// show input for entering number of shares
-		// show Review button
-		// validate input value number of shares
-		// submit for Review
-	// Review
-		// show Edit button, show Final Submit button
-			// if Edit: go to Review
-			// if Final Submit: handleFinalSubmit
 
 	handleChange(e) {
 		this.setState({quantity: e.target.value});
@@ -61,17 +46,13 @@ export default class Stock extends React.Component {
 	handleSell(e) {
 		e.preventDefault();
 		alert(`Sell ${this.state.quantity} shares of ${this.state.symbol}`);
+		// axios.post()
 	}
 	handleBuy(e) {
 		e.preventDefault();
 		alert(`Buy ${this.state.quantity} shares of ${this.state.symbol}`);
-
+		// axios.post()
 	}
-	// handleBuyIntention() {}
-	// handleSellIntention() {}
-	// handleEdit() {}
-	// handleReview() {}
-	// handleFinalSubmit() {}
 
 	render() {
 		return (
