@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { FormGroup, FormControl } from 'react-bootstrap';
 import Autocomplete from 'react-autocomplete';
+import {Redirect} from 'react-router-dom';
 
 export default class Search extends React.Component {
 	constructor(props) {
@@ -11,7 +11,8 @@ export default class Search extends React.Component {
 		this.state = {
 			searchTerm: '',
 			stockData: [],
-			renderData: []
+			renderData: [],
+			redirect: false
 		}
 		axios.get('https://api.iextrading.com/1.0/ref-data/symbols')
 				.then(response => {
@@ -23,25 +24,26 @@ export default class Search extends React.Component {
 	handleChange(e) {
 		e.preventDefault();
 		this.setState({searchTerm: e.target.value});
-		console.log(this.state.searchTerm);
 		let selections = this.state.stockData.filter((entry, index, array) => {
 			return (
 				entry.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
 				|| entry.symbol.toLowerCase().includes(this.state.searchTerm.toLowerCase())
 			);
 		});
-		console.log(`selections`, selections);
 		this.setState({ renderData: selections })
 	}
-	handleSelect() {
-		// TODO:
-		// needs symbol value of selected entry
-		// pass on submitted symbol value to Stock component
-		// go to stock page
+	handleSelect(selected) {
+		console.log(selected);
+		this.setState({redirect: true})
 	}
 //https://www.w3schools.com/howto/howto_js_autocomplete.asp
 //https://stackoverflow.com/questions/49075311/custom-bootstrap-form-input-with-dropdown-suggestions
 	render() {
+		if (this.state.redirect) {
+			return (
+				<Redirect to='/stock' />
+			)
+		}
 		return (
 			<div>
 				<Autocomplete
