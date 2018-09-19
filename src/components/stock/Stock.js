@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Button } from 'react-bootstrap';
 export default class Stock extends React.Component {
 	constructor(props) {
 		super(props);
+		console.log(this.props);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleBuy = this.handleBuy.bind(this);
 		this.handleSell = this.handleSell.bind(this);
@@ -13,7 +14,7 @@ export default class Stock extends React.Component {
 		this.state = {
 			date: currentDate.toString(),
 			transactionType: '',
-			symbol: 'AAPL', // TODO: should receive this value from Search component
+			symbol: props.match.params.symbol, // TODO: should receive this value from Search component
 			name: '',
 			price: '', // TODO: display 2-decimal-point float in render
 			quantity: '',
@@ -47,7 +48,7 @@ export default class Stock extends React.Component {
 	}
 	handleSell(e) {
 		e.preventDefault();
-		alert(`Sell ${this.state.quantity} shares of ${this.state.symbol}`);
+		//alert(`Sell ${this.state.quantity} shares of ${this.state.symbol}`);
 		axios.post('/transaction/all', {
 			date: this.state.date,
 			type: 'sell',
@@ -62,7 +63,7 @@ export default class Stock extends React.Component {
 		e.preventDefault();
 		alert(`Buy ${this.state.quantity} shares of ${this.state.symbol}`);
 		// post Transaction
-		axios.post('/transaction/all', {
+		axios.post('http://localhost:8080/transaction/all', {
 			date: this.state.date,
 			type: 'buy',
 			symbol: this.state.symbol,
@@ -76,7 +77,7 @@ export default class Stock extends React.Component {
 		// post to Portfolio
 		// if portfolio doesn't exist: create
 		// if portfolio exists: update
-		axios.post('/portfolio', {
+		axios.post('http://localhost:8080/portfolio', {
 			date: this.state.date,
 			symbol: this.state.symbol,
 			name: this.state.name,

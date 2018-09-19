@@ -12,7 +12,8 @@ export default class Search extends React.Component {
 			searchTerm: '',
 			stockData: [],
 			renderData: [],
-			redirect: false
+			redirect: false,
+			symbol: ''
 		}
 		axios.get('https://api.iextrading.com/1.0/ref-data/symbols')
 				.then(response => {
@@ -34,14 +35,17 @@ export default class Search extends React.Component {
 	}
 	handleSelect(selected) {
 		console.log(selected);
-		this.setState({redirect: true})
+		this.setState({
+			redirect: true,
+			symbol: selected
+		})
 	}
 //https://www.w3schools.com/howto/howto_js_autocomplete.asp
 //https://stackoverflow.com/questions/49075311/custom-bootstrap-form-input-with-dropdown-suggestions
 	render() {
 		if (this.state.redirect) {
 			return (
-				<Redirect to='/stock' />
+				<Redirect to={`/stock/${this.state.symbol}`} />
 			)
 		}
 		return (

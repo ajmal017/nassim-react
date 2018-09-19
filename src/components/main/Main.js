@@ -20,7 +20,7 @@ export default class Main extends React.Component {
 				<Route path='/account' component={Account} />
 				<Route path='/transactions' component={TransactionContainer} />
 				<Route path='/portfolio' component={Portfolio} />
-				<Route path='/stock' component={Stock}/>
+				<Route path='/stock/:symbol' component={Stock}/>
 			</Switch>
 		)
 	}
