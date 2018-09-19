@@ -40,12 +40,15 @@ export default class Stock extends React.Component {
 	}
 
 	handleChange(e) {
-		this.setState({quantity: e.target.value});
+		this.setState({
+			quantity: e.target.value,
+			totalValue: (this.state.price * e.target.value)
+		});
 	}
 	handleSell(e) {
 		e.preventDefault();
 		alert(`Sell ${this.state.quantity} shares of ${this.state.symbol}`);
-		axios.post('transaction/all', {
+		axios.post('/transaction/all', {
 			date: this.state.date,
 			type: 'sell',
 			symbol: this.state.symbol,
@@ -67,12 +70,21 @@ export default class Stock extends React.Component {
 			price: this.state.price,
 			quantity: this.state.quantity,
 			totalValue: this.state.totalValue
-		});
-		// post to Portfolio
-		axios.get('/portfolio/all', {
-			// if portfolio doesn't exist: create
-			// if portfolio exists: update
 		})
+			.then(response => console.log(response))
+			.catch(error => console.log(error));
+		// post to Portfolio
+		// if portfolio doesn't exist: create
+		// if portfolio exists: update
+		axios.post('/portfolio', {
+			date: this.state.date,
+			symbol: this.state.symbol,
+			name: this.state.name,
+			quantity: this.state.quantity,
+			totalValue: this.state.totalValue
+		})
+			.then(response => console.log(response))
+			.catch(error => console.log(error));
 	}
 
 	render() {
