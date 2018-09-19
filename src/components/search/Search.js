@@ -16,7 +16,7 @@ export default class Search extends React.Component {
 		axios.get('https://api.iextrading.com/1.0/ref-data/symbols')
 				.then(response => {
 					this.setState({stockData: response.data});
-					console.log(this.stockData);
+					console.log(this.state.stockData);
 				})
 	}
 
@@ -24,10 +24,14 @@ export default class Search extends React.Component {
 		e.preventDefault();
 		this.setState({searchTerm: e.target.value});
 		console.log(this.state.searchTerm);
-		let selections = this.state.stockData.filter(entry => {
-			entry.name === this.state.searchTerm || entry.symbol === this.state.searchTerm;
+		let selections = this.state.stockData.filter((entry, index, array) => {
+			return (
+				entry.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+				|| entry.symbol.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+			);
 		});
 		console.log(`selections`, selections);
+		this.setState({ renderData: selections })
 	}
 	populateSelection() {
 
@@ -45,7 +49,7 @@ export default class Search extends React.Component {
 			<div>
 				<Autocomplete
 					getItemValue={(item) => item.symbol}
-					items={this.state.stockData}
+					items={this.state.renderData}
 					renderItem={(item, isHighlighted) =>
 						<div style={{ background: isHighlighted ? 'lightgray' : 'white' }} key={item.symbol}>
 							{item.symbol} - {item.name}
