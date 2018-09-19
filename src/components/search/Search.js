@@ -33,9 +33,6 @@ export default class Search extends React.Component {
 		console.log(`selections`, selections);
 		this.setState({ renderData: selections })
 	}
-	populateSelection() {
-
-	}
 	handleSelect() {
 		// TODO:
 		// needs symbol value of selected entry
