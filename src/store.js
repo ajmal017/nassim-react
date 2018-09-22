@@ -1,13 +1,19 @@
 import { createStore, combineReducers } from 'redux';
+// Import Reducers
 import { transactionReducer } from './reducers/transaction-reducer';
 
-// Create the store and combine all the reducers
+// Create Store and combine all Reducers
 const rootReducer = combineReducers({
 	//account: accountReducer,
 	//stock: stockReducer,
 	transaction: transactionReducer
 });
-// stores states of reducers
-const store = createStore(rootReducer);
 
+// Store States of Reducers
+const store = createStore(rootReducer);
+// store.getState() returns current State
+// store.dispatch() dispatches Action and trigger Reducers
+// Allows Component to access anything in Store by store.transaction, store.account, store.stock, etc.
+
+// Export Store for use
 export default store;

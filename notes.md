@@ -1,5 +1,7 @@
 # Notes
 
+For notes on Redux, see redux.md.
+
 ## AJAX Routes
 - DJI: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=DJI&interval=1min&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`
 - SPX: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=SPX&interval=1min&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`

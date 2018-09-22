@@ -1,8 +1,9 @@
 import React from 'react';
-import Transaction from '../transaction/Transaction';
 import axios from 'axios';
+import Transaction from '../transaction/Transaction';
 import { connect } from 'react-redux';
-import { testFunction } from '/Users/Leo/nassim-react/src/actions/transaction-actions';
+// ???Import Actions: is this necessary? Why?
+import { getAllTransactions, createTransaction } from '/Users/Leo/nassim-react/src/actions/transaction-actions';
 
 class TransactionContainer extends React.Component {
 	constructor(props) {
@@ -40,11 +41,16 @@ class TransactionContainer extends React.Component {
 // Connects transactionReducer to `this`
 const mapStateToProps = (state) => {
 	return {
+		// ??? Are these statements correct?
 		 // state.transaction is from rootReducer in store.js
+		 // store.js is connected to this script through Provider
+		 // Provider encapsulates this Component
 		 // the key can be named anything
 		transaction: state.transaction
 	}
 }
+const mapDispatchToProps = () => {}
 // connect(mapStateToProps) connects redux state to component
-// connect(mapDispatchToProps) connects redux actions to component
-export default connect(mapStateToProps, null) (TransactionContainer)
+export default connect(mapStateToProps, null)(TransactionContainer) // null should be replaced by Action
+// store’s dispatch method is automatically provided as a prop
+// `dispatch` connects redux actions to component

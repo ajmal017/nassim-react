@@ -62,19 +62,21 @@
 	- [x] Footer
 - [ ] Home
 - [ ] Landing
-- [ ] Account
-	- [ ] Email
-	- [ ] Password
-	- [ ] Balance
-	- [ ] Assets
-- [ ] Stock
-	- [ ] Buy
-	- [ ] Sell
-- [ ] Portfolio
-- [ ] Transaction
+- [x] Account
+	- [x] Email
+	- [x] Password
+	- [x] Cash
+	- [x] Assets
+- [x] Stock
+	- [x] Buy
+	- [x] Sell
+- ([ ] Portfolio) - may be discarded
+- [x] Transaction
 ### Authentication
 - [x] Sign up
 - [x] Sign in
+- [ ] Native register
+- [ ] Native log-in
 - [ ] Google sign-in - [reference](https://developers.google.com/identity/sign-in/web/sign-in)
 - [ ] Facebook sign-in - [reference](https://developers.facebook.com/docs/facebook-login/web)
 - [ ] GitHub sign-in
@@ -82,3 +84,4 @@
 
 ### Notes
 - See [notes](https://github.com/elainechan/nassim-react/blob/master/notes.md) for external APIs and libraries.
+- See redux.md for notes on Redux.
