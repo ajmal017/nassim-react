@@ -70,7 +70,7 @@
 - [x] Stock
 	- [x] Buy
 	- [x] Sell
-- ([ ] Portfolio) - may be discarded
+- [ ] (Portfolio) - may be discarded
 - [x] Transaction
 ### Authentication
 - [x] Sign up

@@ -2,7 +2,7 @@ import { GET_SYMBOLS_LIST, GO_TO_STOCK } from '../actions/search-actions';
 
 const initialState = {}
 
-const searchReducer = (state=initialState, action) => {
+export const searchReducer = (state=initialState, action) => {
 	switch(action.type) {
 		case GET_SYMBOLS_LIST:
 			// do something
