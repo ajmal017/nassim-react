@@ -34,9 +34,9 @@ export const transactionReducer = (state=initialState, action) => {
 };
 ```
 ## Store
-1. Import **`Reducer`**s
-2. Combine **`Reducer`**s
-3. Create **`Store`** using the combined **`Reducer`**s
+1. Import **`Reducer`** s
+2. Combine **`Reducer`** s
+3. Create **`Store`** using the combined **`Reducer`** s
 4. Export **`Store`** for use in **`<Provider>`**
 ```javascript
 import { combineReducers, createStore } from 'redux';
@@ -53,7 +53,7 @@ export default store;
 1. Import **`Provider`** from `react-redux` package
 2. Import **`Store`**
 3. Import React **`Component`**
-4. Call **`Store`** in **`Provider`**
+4. Call **`Store`** in **`Provider`**; this makes **`Component`** aware of the **`Store`**
 ```javascript
 // ./src/index.js
 import React from 'react';

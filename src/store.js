@@ -1,11 +1,14 @@
 import { createStore, combineReducers } from 'redux';
 // Import Reducers
 import { transactionReducer } from './reducers/transaction-reducer';
+import { stockReducer } from './reducers/stock-reducer';
+import { searchReducer } from './reducers/search-reducer';
 
 // Create Store and combine all Reducers
 const rootReducer = combineReducers({
 	//account: accountReducer,
-	//stock: stockReducer,
+	search: searchReducer,
+	stock: stockReducer,
 	transaction: transactionReducer
 });
 

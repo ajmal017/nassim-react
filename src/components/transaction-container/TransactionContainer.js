@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Transaction from '../transaction/Transaction';
 import { connect } from 'react-redux';
-// ???Import Actions: is this necessary? Why?
+// ??? import Actions: is this necessary? Why?
 import { getAllTransactions, createTransaction } from '/Users/Leo/nassim-react/src/actions/transaction-actions';
 
 class TransactionContainer extends React.Component {
@@ -20,6 +20,8 @@ class TransactionContainer extends React.Component {
 				console.log(error);
 			});
 	}
+	
+
 	render() {
 		const transactions = this.state.transactions.map((entry, index) => {
 			return (
@@ -54,3 +56,6 @@ const mapDispatchToProps = () => {}
 export default connect(mapStateToProps, null)(TransactionContainer) // null should be replaced by Action
 // store’s dispatch method is automatically provided as a prop
 // `dispatch` connects redux actions to component
+// ??? where does the `dispatch` occur?
+// ??? where does the action execute?
+// ??? where is the function, used for transforming data, located?

@@ -84,4 +84,4 @@
 
 ### Notes
 - See [notes](https://github.com/elainechan/nassim-react/blob/master/notes.md) for external APIs and libraries.
-- See redux.md for notes on Redux.
+- See [redux.md](./redux.md) for notes on Redux.
