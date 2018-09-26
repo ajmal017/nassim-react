@@ -84,6 +84,12 @@ Main, Header, Footer, Landing, Home
 	- `current`, referring to the buy or sell request currently being executed; or
 	- `historical`, referring to requests executed in the past.
 - `Transaction` should be a slave/child of `Stock`
+- Data flow:
+	- `Stock` makes a transaction request
+	- `Transaction` validates the request
+	- `Transaction` executes request or resolves promise and returns an error message
+	- `Transaction` records new transaction history in database
+	- `Transaction` performs post-transaction actions: sending notification
 #### `Portfolio`: consider making a dictionary with symbols as keys
 - Dictionary:
 ```javascript
