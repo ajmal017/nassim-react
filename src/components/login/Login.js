@@ -1,3 +1,5 @@
+// Container component
+// https://redux.js.org/basics/usagewithreact#presentational-and-container-components
 import React from 'react';
 import { Button, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 

@@ -1,7 +1,14 @@
+// Container component
 import React from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import Autocomplete from 'react-autocomplete';
 import {Redirect} from 'react-router-dom';
+
+Search.propTypes = {
+	handleChange: PropTypes.func.isRequired,
+	handleSelect: PropTypes.func.isRequired
+}
 
 export default class Search extends React.Component {
 	constructor(props) {

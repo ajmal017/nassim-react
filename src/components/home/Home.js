@@ -1,3 +1,5 @@
+// Presentation component
+// https://redux.js.org/basics/usagewithreact#presentational-and-container-components
 import React from 'react';
 import axios from 'axios';
 

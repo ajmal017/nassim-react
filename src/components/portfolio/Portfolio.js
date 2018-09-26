@@ -1,3 +1,7 @@
+// ??? Container / Presentation component
+// https://redux.js.org/basics/usagewithreact#presentational-and-container-components
+// It presents data
+// It fetches data
 import React from 'react';
 
 export default class Portfolio extends React.Component {

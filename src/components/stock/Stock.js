@@ -1,6 +1,13 @@
+//??? Container / Presentation component
+
 import React from 'react';
+import PropTypes from 'prop-types'
 import axios from 'axios';
 import { FormGroup, FormControl, Button } from 'react-bootstrap';
+
+Stock.propTypes = {
+	symbol: PropTypes.string.isRequired
+}
 
 export default class Stock extends React.Component {
 	constructor(props) {

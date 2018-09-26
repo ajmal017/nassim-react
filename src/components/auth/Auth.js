@@ -1,3 +1,5 @@
+// Container component
+// https://redux.js.org/basics/usagewithreact#presentational-and-container-components
 import React from 'react';
 import Register from '../register/Register';
 import Login from '../login/Login';
