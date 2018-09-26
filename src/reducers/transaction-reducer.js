@@ -36,8 +36,7 @@ export const transactionReducer = (state=initialState, action) => { // Define St
 				items: action.payload
 			});
 		case EXECUTE_BUY_TRANSACTION:
-			debugger
-			console.log('Execute `buy` transaction inside Reducer.')
+			console.log('Execute `Buy` transaction inside Reducer.')
 			return Object.assign({}, state, {
 				currentTransactionRequest: action.payload
 			});

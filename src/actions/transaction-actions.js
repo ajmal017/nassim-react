@@ -20,7 +20,29 @@ export const receiveTransactionHistory = {
 // RECEIVE_TRANSACTION_REQUEST
 // VALIDATE_TRANSACTION_REQUEST
 // EXECUTE_BUY_TRANSACTION -- buy
+export function shouldExecuteBuy(buyRequest, account) {
+	// validate enough account.cash to buy totalValue
+	const cash = account.cash
+	if (buyRequest.totalValue > account.cash) {
+		return false
+	} else {
+		return true
+	}
+}
 // EXECUTE_SELL_TRANSACTION -- sell
+export function shouldExecuteSell(sellRequest, holdings) {
+	// validate enough 
+	// account.holding.symbol.quantity
+	// OR
+	// portfolio.symbol.quantity
+	// to sell total quantity
+	const stockHolding = holdings.symbol.quantity
+	if (stockHolding < sellRequest.quantity) {
+		return false
+	} else {
+		return true
+	}
+}
 // ANNOUNCE_TRANSACTION_COMPLETION
 
 export const EXECUTE_BUY_TRANSACTION = 'EXECUTE_BUY_TRANSACTION';
