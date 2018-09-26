@@ -1,5 +1,14 @@
 // Import Actions
-import { REQUEST_TRANSACTIONS, RECEIVE_TRANSACTIONS, POST_TRANSACTION } from "../actions/transaction-actions";
+import { 
+	REQUEST_TRANSACTION_HISTORY,
+	RECEIVE_TRANSACTION_HISTORY,
+	// RECEIVE_TRANSACTION_REQUEST,
+	// VALIDATE_TRANSACTION_REQUEST,
+	// EXECUTE_BUY_TRANSACTION,
+	// EXECUTE_SELL_TRANSACTION,
+	RECORD_TRANSACTION_IN_HISTORY
+	// ANNOUNCE_TRANSACTION_COMPLETION
+} from "../actions/transaction-actions";
 
 // Define initial State
 const initialState = {
@@ -12,19 +21,19 @@ const initialState = {
 // https://redux.js.org/advanced/asyncactions
 export const transactionReducer = (state=initialState, action) => { // Define State before entering Reducer
 	switch(action.type) {
-		case REQUEST_TRANSACTIONS:
+		case REQUEST_TRANSACTION_HISTORY:
 			// ??? Where does the API call occur?
 			// axios.get('http://localhost:8080/transaction/all')
 			// store data in payload
 			return Object.assign({}, state, {
 				isFetching: true
 			});
-		case RECEIVE_TRANSACTIONS:
+		case RECEIVE_TRANSACTION_HISTORY:
 			return Object.assign({}, state, {
 				isFetching: false,
 				items: action.payload
 			});
-		case POST_TRANSACTION:
+		case RECORD_TRANSACTION_IN_HISTORY:
 			// ??? Where does this API call occur?
 			// axios.post('http://localhost:8080/transaction/all')
 			console.log(action.payload);
@@ -38,8 +47,8 @@ export const transactionReducer = (state=initialState, action) => { // Define St
 // ??? Why does it only work when doing `export const transactionReducer`
 
 // Dispatching Actions
-// ??? Where do I `dispatch` these declarative actions?
-// ??? Where do I place the functions that I use to actually perform these actions?
-// ??? where does the data transformation actually occur?
-// ??? Should I combine all Action Creators in a file? 
+// ??? Where do I `dispatch` these declarative actions? in Actions using thunk
+// ??? Where do I place the functions that I use to actually perform these actions? Actions
+// ??? where does the data transformation actually occur? Actions
+// ??? Should I combine all Action Creators in a file? yes
 // 			See http://devguides.io/redux/actions and search for `Action creators`

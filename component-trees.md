@@ -1,7 +1,5 @@
 # Component Trees
-
 ## Container Components
-
 ### Dashboard
 ```javascript
 Dashboard {
@@ -45,7 +43,7 @@ Account {
 				symbol: String,
 				name: String,
 				quantity: Number,
-				price: Number
+				price: Number,
 				totalValue: Number
 			}
 		]
@@ -70,7 +68,7 @@ Stock {
 		type: String,
 		quantity: Number,
 		price: Number,
-		totalValue: Number
+		totalValue: Number,
 		execute: false
 	}
 }

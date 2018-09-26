@@ -1,3 +1,8 @@
+import axios from 'axios';
+
+// DISPLAY_DATA
+// REQUEST_TRANSACTION_EXECUTION
+
 export const BUY_STOCK = 'BUY_STOCK';
 export function buyStock(symbol, buyRequest) {
 	return {
@@ -19,6 +24,20 @@ export function sellStock(symbol, sellRequest) {
 		quantity: sellRequest.quantity,
 		totalValue: sellRequest.totalValue
 	}
+}
+
+export function executeBuy(buyRequest, account) {
+	axios.post('http://localhost:8080/transaction/all', {
+			date: buyRequest.date,
+			type: buyRequest.buy,
+			symbol: buyRequest.symbol,
+			name: buyRequest.name,
+			price: buyRequest.price,
+			quantity: buyRequest.quantity,
+			totalValue: buyRequest.totalValue
+		})
+			.then(response => console.log(response))
+			.catch(error => console.log(error));
 }
 
 export function shouldExecuteBuy(buyRequest, account) {
@@ -45,7 +64,11 @@ export function shouldExecuteSell(sellRequest, holdings) {
 }
 
 // Thunk
-export function executeBuy() {
-
+export function executeBuyIfValidated(buyRequest) {
+	if (shouldExecuteBuy(getState(), buyRequest)) {
+		return dispatch(executeBuy(buyRequest))
+	} else {
+		return Promise.resolve()
+	}
 }
-export function executeSell()
+export function executeSellIfValidated() {}
