@@ -1,4 +1,6 @@
 import axios from 'axios';
+import ReduxThunk from 'redux-thunk';
+
 
 // DISPLAY_DATA
 // REQUEST_TRANSACTION_EXECUTION
@@ -64,6 +66,7 @@ export function shouldExecuteSell(sellRequest, holdings) {
 }
 
 // Thunk
+/*
 export function executeBuyIfValidated(buyRequest) {
 	if (shouldExecuteBuy(getState(), buyRequest)) {
 		return dispatch(executeBuy(buyRequest))
@@ -72,3 +75,4 @@ export function executeBuyIfValidated(buyRequest) {
 	}
 }
 export function executeSellIfValidated() {}
+*/

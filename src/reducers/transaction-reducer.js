@@ -4,9 +4,9 @@ import {
 	RECEIVE_TRANSACTION_HISTORY,
 	// RECEIVE_TRANSACTION_REQUEST,
 	// VALIDATE_TRANSACTION_REQUEST,
-	// EXECUTE_BUY_TRANSACTION,
 	// EXECUTE_SELL_TRANSACTION,
-	RECORD_TRANSACTION_IN_HISTORY
+	RECORD_TRANSACTION_IN_HISTORY,
+	EXECUTE_BUY_TRANSACTION
 	// ANNOUNCE_TRANSACTION_COMPLETION
 } from "../actions/transaction-actions";
 
@@ -14,8 +14,10 @@ import {
 const initialState = {
 	transactions: { // key name is arbitrary
 		isFetching: false,
-		items: []
-	}
+		items: [],
+
+	},
+	currentTransactionRequest: ''
 }
 // Wrap all Actions in Reducer
 // https://redux.js.org/advanced/asyncactions
@@ -32,6 +34,12 @@ export const transactionReducer = (state=initialState, action) => { // Define St
 			return Object.assign({}, state, {
 				isFetching: false,
 				items: action.payload
+			});
+		case EXECUTE_BUY_TRANSACTION:
+			debugger
+			console.log('Execute `buy` transaction inside Reducer.')
+			return Object.assign({}, state, {
+				currentTransactionRequest: action.payload
 			});
 		case RECORD_TRANSACTION_IN_HISTORY:
 			// ??? Where does this API call occur?
