@@ -115,7 +115,7 @@ class Stock extends React.Component {
 	}
 
 	render() {
-		debugger
+
 		return (
 			<div>
 				<h1>Stock</h1>

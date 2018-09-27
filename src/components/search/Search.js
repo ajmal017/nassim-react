@@ -14,7 +14,7 @@ Search.propTypes = {
 }
 */
 
-export default class Search extends React.Component {
+class Search extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
@@ -38,10 +38,12 @@ export default class Search extends React.Component {
 				})
 	}
 
+	/*
 	componentDidMount() {
 		let data = this.props.getSymbolsList().payload; // what state are we using? where is the data? 
 		this.setState({ symbolsList: data });
 	}
+	*/
 
 	handleChange(e) {
 		e.preventDefault();

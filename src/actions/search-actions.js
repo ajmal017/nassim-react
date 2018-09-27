@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const GET_SYMBOLS_LIST = 'GET_SYMBOLS_LIST';
 export function getSymbolsList() {
 	axios.get('https://api.iextrading.com/1.0/ref-data/symbols')

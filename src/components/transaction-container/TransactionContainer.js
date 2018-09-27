@@ -4,7 +4,7 @@ import axios from 'axios';
 import Transaction from '../transaction/Transaction';
 import { connect } from 'react-redux';
 // ??? import Actions: is this necessary? Why?
-import { getAllTransactions, createTransaction } from '/Users/Leo/nassim-react/src/actions/transaction-actions';
+import { requestTransactionHistory } from '/Users/Leo/nassim-react/src/actions/transaction-actions';
 
 class TransactionContainer extends React.Component {
 	constructor(props) {
@@ -12,6 +12,7 @@ class TransactionContainer extends React.Component {
 		this.state = {
 			transactions: []
 		}
+		/*
 		axios.get('http://localhost:8080/transaction/all')
 			.then(response => {
 				this.setState({transactions: response.data});
@@ -20,11 +21,15 @@ class TransactionContainer extends React.Component {
 			.catch(error => {
 				console.log(error);
 			});
+			*/
+	}
+	componentDidMount() {
+		this.props.requestTransactionHistory();
 	}
 	
 	render() {
 		debugger
-		const transactions = this.state.transactions.map((entry, index) => {
+		const transactions = this.props.transactionData.transactionHistoryData.map((entry, index) => {
 			return (
 			<div key={index}>
 				<Transaction key={index} index={index} {...entry} />
@@ -49,10 +54,10 @@ const mapStateToProps = (state) => {
 		 // store.js is connected to this script through Provider
 		 // Provider encapsulates this Component
 		 // the key can be named anything
-		transaction: state.transaction
+		transactionData: state.transactionReducer
 	}
 }
 const mapDispatchToProps = () => {}
 // connect(mapStateToProps) connects redux state to component
-export default connect(mapStateToProps, null)(TransactionContainer) // null should be replaced by Action
+export default connect(mapStateToProps, { requestTransactionHistory })(TransactionContainer) // null should be replaced by Action
 // store’s dispatch method is automatically provided as a prop

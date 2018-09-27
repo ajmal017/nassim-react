@@ -1,23 +1,22 @@
-import ReduxThunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 import axios from 'axios';
 
 export const REQUEST_TRANSACTION_HISTORY = 'REQUEST_TRANSACTION_HISTORY';
-export function requestTransactionHistory(transactionHistoryRequestData, requestTimePeriod) {
-	const getTransactionHistoryRequest = axios.get(`http://localhost:8080/transaction/${requestTimePeriod}`, transactionHistoryRequestData)
-		.then(response => {
-			return {
-				type: REQUEST_TRANSACTION_HISTORY,
-				payload: response.data
-			}
-		})
-		.catch(error => console.log(error));
+export function requestTransactionHistory() {
+	return function (dispatch) {
+		const getTransactionHistoryRequest = axios.get(`http://localhost:8080/transaction/all`)
+			.then(response => {
+				dispatch(receiveTransactionHistory(response.data));
+			})
+			.catch(error => console.log(error));
+	}
 };
 
 export const RECEIVE_TRANSACTION_HISTORY = 'RECEIVE_TRANSACTION_HISTORY';
-export function receiveTransactionHistory() {
+export function receiveTransactionHistory(transactionData) {
 	return {
 		type: RECEIVE_TRANSACTION_HISTORY,
-		payload: 'DATA'
+		payload: transactionData
 	}
 }
 
@@ -25,7 +24,7 @@ export function receiveTransactionHistory() {
 function shouldExecuteBuy(buyRequestData, account) {
 	// validate enough account.cash to buy totalValue
 	const cash = account.cash
-	if (buyRequest.totalValue > account.cash) {
+	if (buyRequestData.totalValue > account.cash) {
 		return false
 	} else {
 		return true
@@ -40,7 +39,7 @@ function shouldExecuteSell(sellRequestData, account) {
 	// portfolio.symbol.quantity
 	// to sell total quantity
 	const stockHolding = account.portfolio.symbol.quantity
-	if (stockHolding < sellRequest.quantity) {
+	if (stockHolding < sellRequestData.quantity) {
 		return false
 	} else {
 		return true
@@ -50,24 +49,20 @@ function shouldExecuteSell(sellRequestData, account) {
 export const EXECUTE_BUY_TRANSACTION = 'EXECUTE_BUY_TRANSACTION';
 export function executeBuyTransaction(buyRequestData) {
 	console.log('Execute `Buy` transaction inside Action.');
-	const postBuyTransactionRequest = axios.post('http://localhost:8080/transaction/all', buyRequestData)
-		.then(response => {
-			return {
-				type: EXECUTE_BUY_TRANSACTION,
-				payload: response.data
-			}
-		})
-		.catch(error => console.log(error))
-	
-}
-// TODO
-// do a thunk for execute buy transaction
-export function thunkExecuteBuy(buyRequestData) {
 	return function (dispatch) {
-		dispatch(executeBuyTransaction(buyRequestData));
-		return axios.post('http://localhost:8080/transaction/all', buyRequestData)
-			.then(response => response.data)
+		const postBuyTransactionRequest = axios.post('http://localhost:8080/transaction/all', buyRequestData)
+			.then(response => {
+				dispatch(notifyReducerTransactionCompletion(response.data));
+			})
 			.catch(error => console.log(error))
+	}
+}
+
+export const ANNOUNCE_TRANSACTION_COMPLETION = 'NOTIFY_REDUCER_TRANSACTION_COMPLETION';
+export function notifyReducerTransactionCompletion(transactionData) {
+	return {
+		type: ANNOUNCE_TRANSACTION_COMPLETION,
+		payload: transactionData
 	}
 }
 
@@ -84,11 +79,11 @@ export function executeSellTransaction(sellRequestData) {
 		.catch(error => console.log(error))
 	return {
 		type: EXECUTE_SELL_TRANSACTION,
-		symbol: sellRequest.symbol,
-		name: sellRequest.name,
-		price: sellRequest.price,
-		quantity: sellRequest.quantity,
-		totalValue: sellRequest.totalValue
+		symbol: sellRequestData.symbol,
+		name: sellRequestData.name,
+		price: sellRequestData.price,
+		quantity: sellRequestData.quantity,
+		totalValue: sellRequestData.totalValue
 	}
 }
 

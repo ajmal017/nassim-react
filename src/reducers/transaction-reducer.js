@@ -5,17 +5,18 @@ import {
 	// RECEIVE_TRANSACTION_REQUEST,
 	// VALIDATE_TRANSACTION_REQUEST,
 	EXECUTE_BUY_TRANSACTION,
-	EXECUTE_SELL_TRANSACTION
-	// REQUEST_TRANSACTION_HISTORY
+	EXECUTE_SELL_TRANSACTION,
+	ANNOUNCE_TRANSACTION_COMPLETION
 	// ANNOUNCE_TRANSACTION_COMPLETION
 } from "../actions/transaction-actions";
 
 // Define initial State
 const initialState = {
 	transactions: { // key name is arbitrary
-		isFetching: false
+		isFetching: false,
 	},
-	currentTransactionRequest: ''
+	currentTransactionRequest: '',
+	transactionHistoryData: []
 }
 // Wrap all Actions in Reducer
 // https://redux.js.org/advanced/asyncactions
@@ -26,22 +27,21 @@ export const transactionReducer = (state=initialState, action) => { // Define St
 				isFetching: true
 			});
 		case RECEIVE_TRANSACTION_HISTORY:
+			debugger
 			return Object.assign({}, state, {
 				isFetching: false,
+				transactionHistoryData: action.payload
 			});
-		case EXECUTE_BUY_TRANSACTION:
-			console.log('Execute `Buy` transaction inside Reducer.');
+		case ANNOUNCE_TRANSACTION_COMPLETION:
+			debugger
 			return Object.assign({}, state, {
 				currentTransactionRequest: action.payload
-			});
+			})
 		case EXECUTE_SELL_TRANSACTION:
 			console.log('Execute `Sell` transaction inside Reducer.');
 			return Object.assign({}, state, {
 				currentTransactionRequest: action.payload
 			})
-		case RECORD_TRANSACTION_HISTORY:
-			console.log(action.payload);
-			return {...state, ...action.payload};
 		default: // if no actions are taken
 			return state;
 	}
