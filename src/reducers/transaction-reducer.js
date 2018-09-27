@@ -4,9 +4,9 @@ import {
 	RECEIVE_TRANSACTION_HISTORY,
 	// RECEIVE_TRANSACTION_REQUEST,
 	// VALIDATE_TRANSACTION_REQUEST,
-	// EXECUTE_SELL_TRANSACTION,
-	RECORD_TRANSACTION_IN_HISTORY,
-	EXECUTE_BUY_TRANSACTION
+	EXECUTE_BUY_TRANSACTION,
+	EXECUTE_SELL_TRANSACTION
+	// REQUEST_TRANSACTION_HISTORY
 	// ANNOUNCE_TRANSACTION_COMPLETION
 } from "../actions/transaction-actions";
 
@@ -36,13 +36,16 @@ export const transactionReducer = (state=initialState, action) => { // Define St
 				items: action.payload
 			});
 		case EXECUTE_BUY_TRANSACTION:
-			console.log('Execute `Buy` transaction inside Reducer.')
+			console.log('Execute `Buy` transaction inside Reducer.');
 			return Object.assign({}, state, {
 				currentTransactionRequest: action.payload
 			});
-		case RECORD_TRANSACTION_IN_HISTORY:
-			// ??? Where does this API call occur?
-			// axios.post('http://localhost:8080/transaction/all')
+		case EXECUTE_SELL_TRANSACTION:
+			console.log('Execute `Sell` transaction inside Reducer.');
+			return Object.assign({}, state, {
+				currentTransactionRequest: action.payload
+			})
+		case RECORD_TRANSACTION_HISTORY:
 			console.log(action.payload);
 			return {...state, ...action.payload};
 		default: // if no actions are taken

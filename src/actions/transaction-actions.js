@@ -1,26 +1,28 @@
 import ReduxThunk from 'redux-thunk';
 import axios from 'axios';
 
-// ??? What's the difference between the behavior of each of the following actions?
-// First one is declared as a function assigned to a constant
-// Second one is declared as an object
-// Third one is declared as a function
 export const REQUEST_TRANSACTION_HISTORY = 'REQUEST_TRANSACTION_HISTORY';
-export const requestTransactionHistory = (data) => ({
-	type: REQUEST_TRANSACTION_HISTORY,
-	payload: data
-});
+export function requestTransactionHistory(transactionHistoryRequestData, requestTimePeriod) {
+	const getTransactionHistoryRequest = axios.get(`http://localhost:8080/transaction/${requestTimePeriod}`, transactionHistoryRequestData)
+		.then(response => {
+			return {
+				type: REQUEST_TRANSACTION_HISTORY,
+				payload: response.data
+			}
+		})
+		.catch(error => console.log(error));
+};
 
 export const RECEIVE_TRANSACTION_HISTORY = 'RECEIVE_TRANSACTION_HISTORY';
-export const receiveTransactionHistory = {
-	type: RECEIVE_TRANSACTION_HISTORY,
-	payload: 'DATA'
+export function receiveTransactionHistory() {
+	return {
+		type: RECEIVE_TRANSACTION_HISTORY,
+		payload: 'DATA'
+	}
 }
 
-// RECEIVE_TRANSACTION_REQUEST
-// VALIDATE_TRANSACTION_REQUEST
-// EXECUTE_BUY_TRANSACTION -- buy
-export function shouldExecuteBuy(buyRequest, account) {
+// VALIDATE_BUY_REQUEST
+function shouldExecuteBuy(buyRequestData, account) {
 	// validate enough account.cash to buy totalValue
 	const cash = account.cash
 	if (buyRequest.totalValue > account.cash) {
@@ -29,27 +31,26 @@ export function shouldExecuteBuy(buyRequest, account) {
 		return true
 	}
 }
-// EXECUTE_SELL_TRANSACTION -- sell
-export function shouldExecuteSell(sellRequest, holdings) {
+
+// VALIDATE_SELL_REQUEST
+function shouldExecuteSell(sellRequestData, account) {
 	// validate enough 
 	// account.holding.symbol.quantity
 	// OR
 	// portfolio.symbol.quantity
 	// to sell total quantity
-	const stockHolding = holdings.symbol.quantity
+	const stockHolding = account.portfolio.symbol.quantity
 	if (stockHolding < sellRequest.quantity) {
 		return false
 	} else {
 		return true
 	}
 }
-// ANNOUNCE_TRANSACTION_COMPLETION
 
 export const EXECUTE_BUY_TRANSACTION = 'EXECUTE_BUY_TRANSACTION';
 export function executeBuyTransaction(buyRequestData) {
-	debugger
 	console.log('Execute `Buy` transaction inside Action.');
-	const postTransactionRequest = axios.post('http://localhost:8080/transaction/all', buyRequestData)
+	const postBuyTransactionRequest = axios.post('http://localhost:8080/transaction/all', buyRequestData)
 		.then(response => {
 			return {
 				type: EXECUTE_BUY_TRANSACTION,
@@ -59,38 +60,35 @@ export function executeBuyTransaction(buyRequestData) {
 		.catch(error => console.log(error))
 	
 }
+// TODO
+// do a thunk for execute buy transaction
+export function thunkExecuteBuy(buyRequestData) {
+	return function (dispatch) {
+		dispatch(executeBuyTransaction(buyRequestData));
+		return axios.post('http://localhost:8080/transaction/all', buyRequestData)
+			.then(response => response.data)
+			.catch(error => console.log(error))
+	}
+}
 
-export const SELL_STOCK = 'SELL_STOCK';
-export function sellStock(symbol, sellRequest) {
+export const EXECUTE_SELL_TRANSACTION = 'EXECUTE_SELL_TRANSACTION';
+export function executeSellTransaction(sellRequestData) {
+	console.log('Execute `Sell` transaction inside Action.')
+	const postSellTransactionRequest = axios.post('http://localhost:8080/transaction/all', sellRequestData)
+		.then(response => {
+			return {
+				type: EXECUTE_SELL_TRANSACTION,
+				payload: response.data
+			}
+		})
+		.catch(error => console.log(error))
 	return {
-		type: SELL_STOCK,
+		type: EXECUTE_SELL_TRANSACTION,
 		symbol: sellRequest.symbol,
 		name: sellRequest.name,
 		price: sellRequest.price,
 		quantity: sellRequest.quantity,
 		totalValue: sellRequest.totalValue
-	}
-}
-
-export function executeBuy(buyRequest, account) {
-	axios.post('http://localhost:8080/transaction/all', {
-			date: buyRequest.date,
-			type: buyRequest.buy,
-			symbol: buyRequest.symbol,
-			name: buyRequest.name,
-			price: buyRequest.price,
-			quantity: buyRequest.quantity,
-			totalValue: buyRequest.totalValue
-		})
-			.then(response => console.log(response))
-			.catch(error => console.log(error));
-}
-
-export const RECORD_TRANSACTION_IN_HISTORY = 'RECORD_TRANSACTION_IN_HISTORY';
-export function postTransaction(data) {
-	return {
-		type: RECORD_TRANSACTION_IN_HISTORY,
-		payload: data
 	}
 }
 
@@ -105,6 +103,3 @@ export function fetchTransactionHistory(params) {
 			.then(data => dispatch(receiveTransactionHistory(data)))
 	}
 }
-// TODO
-// do a thunk for execute buy transaction
-// validation?

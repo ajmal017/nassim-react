@@ -22,7 +22,6 @@ class TransactionContainer extends React.Component {
 			});
 	}
 	
-
 	render() {
 		debugger
 		const transactions = this.state.transactions.map((entry, index) => {

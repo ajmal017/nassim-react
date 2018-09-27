@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import axios from 'axios';
 import { FormGroup, FormControl, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { executeBuyTransaction } from '../../actions/transaction-actions';
+import { executeBuyTransaction, executeSellTransaction } from '../../actions/transaction-actions';
 
 /*
 Stock.propTypes = {
@@ -57,10 +57,11 @@ class Stock extends React.Component {
 			totalValue: (this.state.price * e.target.value)
 		});
 	}
+
 	handleSell(e) {
 		e.preventDefault();
 		//alert(`Sell ${this.state.quantity} shares of ${this.state.symbol}`);
-		axios.post('/transaction/all', {
+		const sellRequestData = {
 			date: this.state.date,
 			type: 'sell',
 			symbol: this.state.symbol,
@@ -68,8 +69,10 @@ class Stock extends React.Component {
 			price: this.state.price,
 			quantity: this.state.quantity,
 			totalValue: this.state.totalValue
-		});
+		}
+		this.props.executeSellTransaction(sellRequestData);
 	}
+
 	handleBuy(e) {
 		e.preventDefault();
 		const buyRequestData = {
@@ -136,6 +139,7 @@ class Stock extends React.Component {
 		)
 	}
 }
+
 const mapStateToProps = (state) => {
 	return {
 		// ??? Are these statements correct?
@@ -146,15 +150,13 @@ const mapStateToProps = (state) => {
 		transaction: state.transaction
 	}
 }
+
 const mapDispatchToProps = () => {}
 // connect(mapStateToProps) connects redux state to component
 
 // connect reducer and action with component
 // this.props.executeBuyTransaction will be usable by this component
-export default connect(mapStateToProps, { executeBuyTransaction })(Stock) // null should be replaced by Action
+export default connect(mapStateToProps, { executeBuyTransaction, executeSellTransaction })(Stock) 
 // store’s dispatch method is automatically provided as a prop
 // `dispatch` connects redux actions to component
-// ??? where does the `dispatch` occur?
-// ??? where does the action execute?
-// ??? where is the function, used for transforming data, located?
-
+// data transformation occurs in Action
