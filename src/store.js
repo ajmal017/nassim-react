@@ -6,10 +6,10 @@ import { searchReducer } from './reducers/search-reducer';
 
 // Create Store and combine all Reducers
 const rootReducer = combineReducers({
-	//account: accountReducer,
-	search: searchReducer,
-	stock: stockReducer,
-	transaction: transactionReducer
+	//accountReducer: accountReducer,
+	searchReducer: searchReducer,
+	stockReducer: stockReducer,
+	transactionReducer: transactionReducer
 });
 
 // Store States of Reducers

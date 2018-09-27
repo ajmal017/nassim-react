@@ -139,7 +139,7 @@ class Stock extends React.Component {
 		)
 	}
 }
-
+// ??? Why do we need both mapStateToProps and connect()?
 const mapStateToProps = (state) => {
 	return {
 		// ??? Are these statements correct?
@@ -147,9 +147,10 @@ const mapStateToProps = (state) => {
 		 // store.js is connected to this script through Provider
 		 // Provider encapsulates this Component
 		 // the key can be named anything
-		transaction: state.transaction
+		transaction: state.transactionReducer
 	}
 }
+
 
 const mapDispatchToProps = () => {}
 // connect(mapStateToProps) connects redux state to component

@@ -13,9 +13,7 @@ import {
 // Define initial State
 const initialState = {
 	transactions: { // key name is arbitrary
-		isFetching: false,
-		items: [],
-
+		isFetching: false
 	},
 	currentTransactionRequest: ''
 }
@@ -24,16 +22,12 @@ const initialState = {
 export const transactionReducer = (state=initialState, action) => { // Define State before entering Reducer
 	switch(action.type) {
 		case REQUEST_TRANSACTION_HISTORY:
-			// ??? Where does the API call occur?
-			// axios.get('http://localhost:8080/transaction/all')
-			// store data in payload
 			return Object.assign({}, state, {
 				isFetching: true
 			});
 		case RECEIVE_TRANSACTION_HISTORY:
 			return Object.assign({}, state, {
 				isFetching: false,
-				items: action.payload
 			});
 		case EXECUTE_BUY_TRANSACTION:
 			console.log('Execute `Buy` transaction inside Reducer.');
@@ -52,9 +46,6 @@ export const transactionReducer = (state=initialState, action) => { // Define St
 			return state;
 	}
 }
-// export default transactionReducer;
-// ??? Why does it not work when exporting at the end?
-// ??? Why does it only work when doing `export const transactionReducer`
 
 // Dispatching Actions
 // ??? Where do I `dispatch` these declarative actions? in Actions using thunk

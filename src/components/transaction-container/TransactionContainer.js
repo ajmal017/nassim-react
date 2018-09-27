@@ -56,7 +56,3 @@ const mapDispatchToProps = () => {}
 // connect(mapStateToProps) connects redux state to component
 export default connect(mapStateToProps, null)(TransactionContainer) // null should be replaced by Action
 // store’s dispatch method is automatically provided as a prop
-// `dispatch` connects redux actions to component
-// ??? where does the `dispatch` occur?
-// ??? where does the action execute?
-// ??? where is the function, used for transforming data, located?
