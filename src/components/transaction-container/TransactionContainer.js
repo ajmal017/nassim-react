@@ -12,17 +12,8 @@ class TransactionContainer extends React.Component {
 		this.state = {
 			transactions: []
 		}
-		/*
-		axios.get('http://localhost:8080/transaction/all')
-			.then(response => {
-				this.setState({transactions: response.data});
-				console.log('transactions: ', this.state.transactions);
-			})
-			.catch(error => {
-				console.log(error);
-			});
-			*/
 	}
+	
 	componentDidMount() {
 		this.props.requestTransactionHistory();
 	}
@@ -47,17 +38,19 @@ class TransactionContainer extends React.Component {
 	}
 }
 // Connects transactionReducer to `this`
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => { // ??? is this the `state` or the `rootReducer`?
 	return {
 		// ??? Are these statements correct?
-		 // state.transaction is from rootReducer in store.js
-		 // store.js is connected to this script through Provider
-		 // Provider encapsulates this Component
-		 // the key can be named anything
+		// state.transaction is from rootReducer in store.js
+		// store.js is connected to this script through Provider
+		// Provider encapsulates this Component
+		// the key can be named anything
 		transactionData: state.transactionReducer
 	}
 }
+// ??? why am I not using this?
 const mapDispatchToProps = () => {}
+
 // connect(mapStateToProps) connects redux state to component
 export default connect(mapStateToProps, { requestTransactionHistory })(TransactionContainer) // null should be replaced by Action
 // store’s dispatch method is automatically provided as a prop

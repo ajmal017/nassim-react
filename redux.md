@@ -1,6 +1,34 @@
-# Redux
+# Redux Notes
 Based on this [tutorial](http://jakesidsmith.com/blog/post/2017-11-18-redux-and-react-an-introduction/).
-## Action
+
+## Recipe for Redux with Thunk
+1. In `Reducer`:
+    - Import `Action`s
+    - Define `initialState`
+    - Define `export` `Reducer` function as a series of `switch`/`case` `Action`s
+    - Fill in `initialState` with whatever data `Action`s need to use
+2. In `Store`:
+    - Import `Reducer`s, `combineReducers`, `createStore`, `applyMiddleware`, `thunk`
+    - `combineReducers()` all `Reducer`s
+    - `createStore` with params `rootReducer` and `applyMiddleware(thunk)`
+    - Export `Store`
+3. In `Index`:
+    - Import `Provider`
+    - Stick `<Provider>`, with `store` attribute value `Store`, inside `ReactDOM.render`
+4. In `Action`:
+    - Define `ACTION` in upper case, with `type` and some stuffing
+    - Define `export` function `actionFunction` under each `ACTION` with same name camel case
+    - Inside `actionFunction`, return an anonymous function with `dispatch` as param
+    - Inside anonymous function, make an async call
+    - Inside the `then` promise of the async call, `dispatch` that `actionFunction`
+5. In `Component`:
+    - Import `actionFunction`, `connect`
+    - `mapStateToProps()` the `rootReducer` state from `Store`
+    - Return an object with whatever key and the `Store.rootReducer.Reducer`
+    - `connect` `mapStateToProps` and `actionFunction` with `Component`
+
+## Gory Details (without thunk)
+### `Action`
 1. Define **`Action`**
 2. Export for use in **`Reducer`**
 ```javascript
@@ -11,7 +39,7 @@ export const getTransactions = {
     payload: []
 };
 ```
-## Reducer
+### `Reducer`
 1. Import **`Action`** definition
 2. Define `state`
 3. Define **`Reducer`** function
@@ -33,7 +61,7 @@ export const transactionReducer = (state=initialState, action) => {
     }
 };
 ```
-## Store
+### `Store`
 1. Import **`Reducer`** s
 2. Combine **`Reducer`** s
 3. Create **`Store`** using the combined **`Reducer`** s
@@ -49,7 +77,7 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer);
 export default store;
 ```
-## Provider
+### `Provider`
 1. Import **`Provider`** from `react-redux` package
 2. Import **`Store`**
 3. Import React **`Component`**
@@ -70,7 +98,7 @@ ReactDOM.render(
 	</BrowserRouter>
 </Provider>, document.getElementById('root'));
 ```
-## Component
+### `Component`
 1. Import **`Action`** into **`Component`**
 2. Map `state` values and actions to **`Props`**
 3. Export the connection

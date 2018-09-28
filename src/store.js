@@ -15,10 +15,10 @@ const rootReducer = combineReducers({
 
 // Store States of Reducers
 // Set up middleware
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+const Store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 // store.getState() returns current State
 // store.dispatch() dispatches Action and trigger Reducers
 // Allows Component to access anything in Store by store.transaction, store.account, store.stock, etc.
 
 // Export Store for use
-export default store;
+export default Store;

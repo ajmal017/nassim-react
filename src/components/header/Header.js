@@ -11,6 +11,7 @@ export default class Header extends React.Component {
 		return (
 		<div>
 			<h1>Nassim</h1>
+			<h2>Trade real stocks in real time with fake money</h2>
 			<ul>
 				<li>
 					<Link to='/'>Landing</Link>

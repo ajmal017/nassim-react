@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import store from './store';
+import Store from './store';
 import './index.css';
 import App from './components/app/App';
 import { BrowserRouter } from 'react-router-dom';
@@ -10,7 +10,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 ReactDOM.render(
-<Provider store={store}>
+<Provider store={Store}>
 	<BrowserRouter>
 		<App />
 	</BrowserRouter>
