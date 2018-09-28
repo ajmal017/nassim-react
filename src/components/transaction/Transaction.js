@@ -1,7 +1,7 @@
 // Presentation component
 import React from 'react';
 import PropTypes from 'prop-types';
-
+/*
 Transaction.propTypes = {
 	symbol: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
@@ -10,6 +10,7 @@ Transaction.propTypes = {
 	price: PropTypes.number.isRequired,
 	total: PropTypes.number.isRequired
 }
+*/
 
 export default function Transaction(props) {
 		// currency format:

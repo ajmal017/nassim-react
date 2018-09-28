@@ -6,6 +6,7 @@ import { searchReducer } from './reducers/search-reducer';
 import thunkMiddleware from 'redux-thunk';
 
 // Create Store and combine all Reducers
+// This is the REDUX STATE
 const rootReducer = combineReducers({
 	//accountReducer: accountReducer,
 	searchReducer: searchReducer,

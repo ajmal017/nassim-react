@@ -1,6 +1,48 @@
 # Notes
+## TODO
+### Frontend
+- [ ] Separate Components into Presentational and Container
+    - [ ] Stock
+    - [ ] Portfolio
+    - [ ] (Acocunt???)
+- [ ] Move all axios code into Actions
+- [ ] Search Redux Thunk
+- [ ] Charts: use charting library to render the chart
+    - [ ] Display text data in Stock
+    - [ ] render charts in stock
+    - [ ] Display data in Dashboard
+    - [ ] render charts in stock
 
-For notes on Redux, see redux.md.
+### Backend
+- [ ] Buy/Sell mechanics
+    - [ ] Validation (backend)
+        - [ ] Buy: check if enough cash in Account
+        - [ ] Sell: check if enough quantity in Portfolio
+    - [ ] Buy 
+        - [ ] reduce cash in Account
+        - [ ] add quantity and value in Portfolio
+    - [ ] Sell
+        - [ ] add cash in Account
+        - [ ] reduce quantity and value in Porfolio
+    - [ ] Portfolio gain/loss compared to selected date in the past
+        - [ ] figure out formulas to use
+
+### Authentication
+    - [ ] front: Create login form
+    - [ ] front: Create register form
+    - [ ] front: call login with data
+    - [ ] front: call register with data
+    - [ ] back: login route
+    - [ ] back: register route
+    - [ ] back: verify token (JWT)
+    - [ ] front: save token in localstorage
+    - [ ] back: upon Register, createPortfolio() and link Account with Portfolio
+
+### Later
+- [ ] Landing page
+- [ ] Demo information
+- [ ] Responsive CSS
+- [ ] Styling
 
 ## AJAX Routes
 - DJI: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=DJI&interval=1min&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`

@@ -2,6 +2,7 @@
 // https://redux.js.org/basics/usagewithreact#presentational-and-container-components
 import React from 'react';
 import axios from 'axios';
+import Portfolio from '../portfolio/Portfolio'
 
 export default class Account extends React.Component {
 	constructor(props) {
@@ -34,6 +35,7 @@ export default class Account extends React.Component {
 			<p>Password: {this.state.password} (will be masked in production)</p>
 			<p>Cash: ${this.state.cash} (currency format)</p>
 			<p>Assets: ${this.state.assets} (currency format)</p>
+			<Portfolio />
 			</div>
 		)
 	}

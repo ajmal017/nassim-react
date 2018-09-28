@@ -20,6 +20,21 @@ export function receiveTransactionHistory(transactionData) {
 	}
 }
 
+
+// TODO this weekend
+// (1)
+// to validate
+// figure out account and portfolio first
+// Backend
+
+// TODO in backend
+// (2)
+// buy -> reduce cash in Account
+// 	-> add quantity and value in portfolio
+
+// sell
+// -> add to cash in account
+
 // VALIDATE_BUY_REQUEST
 function shouldExecuteBuy(buyRequestData, account) {
 	// validate enough account.cash to buy totalValue
@@ -52,14 +67,14 @@ export function executeBuyTransaction(buyRequestData) {
 	return function (dispatch) {
 		const postBuyTransactionRequest = axios.post('http://localhost:8080/transaction/all', buyRequestData)
 			.then(response => {
-				dispatch(notifyReducerTransactionCompletion(response.data));
+				dispatch(announceTransactionCompletion(response.data));
 			})
 			.catch(error => console.log(error))
 	}
 }
 
-export const ANNOUNCE_TRANSACTION_COMPLETION = 'NOTIFY_REDUCER_TRANSACTION_COMPLETION';
-export function notifyReducerTransactionCompletion(transactionData) {
+export const ANNOUNCE_TRANSACTION_COMPLETION = 'ANNOUNCE_TRANSACTION_COMPLETION';
+export function announceTransactionCompletion(transactionData) {
 	return {
 		type: ANNOUNCE_TRANSACTION_COMPLETION,
 		payload: transactionData
@@ -69,32 +84,11 @@ export function notifyReducerTransactionCompletion(transactionData) {
 export const EXECUTE_SELL_TRANSACTION = 'EXECUTE_SELL_TRANSACTION';
 export function executeSellTransaction(sellRequestData) {
 	console.log('Execute `Sell` transaction inside Action.')
-	const postSellTransactionRequest = axios.post('http://localhost:8080/transaction/all', sellRequestData)
+	return function (dispatch) {
+		const postSellTransactionRequest = axios.post('http://localhost:8080/transaction/all', sellRequestData)
 		.then(response => {
-			return {
-				type: EXECUTE_SELL_TRANSACTION,
-				payload: response.data
-			}
+			dispatch(announceTransactionCompletion(response.data))
 		})
 		.catch(error => console.log(error))
-	return {
-		type: EXECUTE_SELL_TRANSACTION,
-		symbol: sellRequestData.symbol,
-		name: sellRequestData.name,
-		price: sellRequestData.price,
-		quantity: sellRequestData.quantity,
-		totalValue: sellRequestData.totalValue
-	}
-}
-
-// https://redux.js.org/advanced/asyncactions
-// ??? Why the extra third step in receiving data?
-export function fetchTransactionHistory(params) {
-	return function (dispatch) {
-		dispatch(requestTransactionHistory(params))
-		return axios.get('http://localhost:8080/transaction/all')
-			.then(response => response.data)
-			.catch(error => console.log(error))
-			.then(data => dispatch(receiveTransactionHistory(data)))
 	}
 }

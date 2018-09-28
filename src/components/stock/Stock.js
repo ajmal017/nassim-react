@@ -142,7 +142,6 @@ class Stock extends React.Component {
 // ??? Why do we need both mapStateToProps and connect()?
 const mapStateToProps = (state) => {
 	return {
-		// ??? Are these statements correct?
 		 // state.transaction is from rootReducer in store.js
 		 // store.js is connected to this script through Provider
 		 // Provider encapsulates this Component
@@ -152,8 +151,9 @@ const mapStateToProps = (state) => {
 }
 
 
-const mapDispatchToProps = () => {}
+// const mapDispatchToProps = () => {}
 // connect(mapStateToProps) connects redux state to component
+// does the same job as second param of connect() below
 
 // connect reducer and action with component
 // this.props.executeBuyTransaction will be usable by this component
