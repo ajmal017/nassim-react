@@ -9,7 +9,7 @@ import About from '../about/About';
 import Account from '../account/Account';
 import TransactionContainer from '../transaction-container/TransactionContainer';
 import Portfolio from '../portfolio/Portfolio';
-import Stock from '../stock/Stock';
+import StockContainer from '../stock-container/StockContainer';
 
 export default class Main extends React.Component {
 	render() {
@@ -22,7 +22,7 @@ export default class Main extends React.Component {
 				<Route path='/account' component={Account} />
 				<Route path='/transactions' component={TransactionContainer} />
 				<Route path='/portfolio' component={Portfolio} />
-				<Route path='/stock/:symbol' component={Stock}/>
+				<Route path='/stock/:symbol' component={StockContainer} />
 			</Switch>
 		)
 	}

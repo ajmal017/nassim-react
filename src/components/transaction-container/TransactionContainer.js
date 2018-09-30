@@ -1,6 +1,5 @@
 // Container component?
 import React from 'react';
-import axios from 'axios';
 import Transaction from '../transaction/Transaction';
 import { connect } from 'react-redux';
 import { requestTransactionHistory } from '/Users/Leo/nassim-react/src/actions/transaction-actions';
@@ -18,7 +17,6 @@ class TransactionContainer extends React.Component {
 	}
 	
 	render() {
-		debugger
 		const transactions = this.props.transactionData.transactionHistoryData.map((entry, index) => {
 			return (
 			<div key={index}>

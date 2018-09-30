@@ -14,7 +14,7 @@ Search.propTypes = {
 }
 */
 
-class Search extends React.Component {
+export default class Search extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
@@ -27,9 +27,7 @@ class Search extends React.Component {
 			symbol: ''
 		}
 		// ??? How to use GET_SYMBOLS_LIST here?
-		/*
-		
-		*/
+	
 		// Get a full list of stock symbols from IEX
 		axios.get('https://api.iextrading.com/1.0/ref-data/symbols')
 				.then(response => {
@@ -88,6 +86,7 @@ class Search extends React.Component {
 		)
 	}
 }
+/*
 const mapStateToProps = (state) => {
 	return {
 		// ??? Are these statements correct?
@@ -99,3 +98,4 @@ const mapStateToProps = (state) => {
 	}
 }
 export default connect(mapStateToProps, { getSymbolsList })(Search)
+*/
