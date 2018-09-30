@@ -5,7 +5,7 @@ import {
 } from '../actions/search-actions';
 
 const initialState = {
-	symbolsList: '',
+	reducerSymbolsList: [],
 	isFetching: false
 }
 
@@ -19,7 +19,7 @@ export const searchReducer = (state=initialState, action) => {
 		case RECEIVE_SYMBOLS_LIST:
 			return Object.assign({}, state, {
 				isFetching: false,
-				symbolsList: action.payload
+				reducerSymbolsList: action.payload
 			})
 		case REDIRECT_TO_STOCK_SYMBOL:
 			// do something

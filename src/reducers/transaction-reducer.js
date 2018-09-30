@@ -16,7 +16,7 @@ const initialState = {
 		isFetching: false,
 	},
 	currentTransactionRequest: '',
-	transactionHistoryData: []
+	reducerTransactionData: []
 }
 // Wrap all Actions in Reducer
 // https://redux.js.org/advanced/asyncactions
@@ -30,7 +30,7 @@ export const transactionReducer = (state=initialState, action) => { // Define St
 			debugger
 			return Object.assign({}, state, {
 				isFetching: false,
-				transactionHistoryData: action.payload
+				reducerTransactionData: action.payload
 			});
 		case ANNOUNCE_TRANSACTION_COMPLETION:
 			debugger

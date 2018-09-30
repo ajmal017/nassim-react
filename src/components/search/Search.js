@@ -30,11 +30,13 @@ class Search extends React.Component {
 		// ??? How to use GET_SYMBOLS_LIST here?
 	
 		// Get a full list of stock symbols from IEX
+		/*
 		axios.get('https://api.iextrading.com/1.0/ref-data/symbols')
 				.then(response => {
 					this.setState({symbolsList: response.data});
 					console.log(this.state.symbolsList);
 				})
+				*/
 	}
 
 	/*
@@ -45,6 +47,9 @@ class Search extends React.Component {
 	*/
 	componentDidMount() {
 		this.props.requestSymbolsList();
+		this.setState({
+			symbolsList: this.props.actionSymbolsList.reducerSymbolsList
+		})
 	}
 
 	handleChange(e) {
@@ -101,7 +106,6 @@ export default connect(mapStateToProps, {requestSymbolsList})(Search)
 /*
 const mapStateToProps = (state) => {
 	return {
-		// ??? Are these statements correct?
 		 // state.transaction is from rootReducer in store.js
 		 // store.js is connected to this script through Provider
 		 // Provider encapsulates this Component

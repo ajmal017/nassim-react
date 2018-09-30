@@ -1,5 +1,5 @@
+import thunk from 'redux-thunk'
 import axios from 'axios';
-import { push } from 'react'
 
 export const REQUEST_SYMBOLS_LIST = 'REQUEST_SYMBOLS_LIST';
 export function requestSymbolsList() {
@@ -10,14 +10,13 @@ export function requestSymbolsList() {
 			})
 			.catch(error => console.log(error));
 	}
-
 }
 
 export const RECEIVE_SYMBOLS_LIST = 'RECEIVE_SYMBOLS_LIST';
-export function receiveSymbolsList(symbolsList) {
+export function receiveSymbolsList(actionSymbolsList) {
 	return {
 		type: RECEIVE_SYMBOLS_LIST,
-		payload: symbolsList
+		payload: actionSymbolsList
 	}
 }
 

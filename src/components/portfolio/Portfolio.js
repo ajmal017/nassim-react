@@ -1,4 +1,4 @@
-// ??? Container / Presentation component
+//  Presentation component
 // https://redux.js.org/basics/usagewithreact#presentational-and-container-components
 // It presents data
 // It fetches data

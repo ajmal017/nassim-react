@@ -9,6 +9,7 @@ class TransactionContainer extends React.Component {
 		super(props)
 		this.state = {
 			transactions: []
+			// ??? is this being used at all?
 		}
 	}
 
@@ -17,7 +18,7 @@ class TransactionContainer extends React.Component {
 	}
 	
 	render() {
-		const transactions = this.props.transactionData.transactionHistoryData.map((entry, index) => {
+		const transactions = this.props.transactionData.reducerTransactionData.map((entry, index) => {
 			return (
 			<div key={index}>
 				<Transaction key={index} index={index} {...entry} />
