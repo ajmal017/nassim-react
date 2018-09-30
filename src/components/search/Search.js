@@ -27,28 +27,12 @@ class Search extends React.Component {
 			redirect: false,
 			symbol: ''
 		}
-		// ??? How to use GET_SYMBOLS_LIST here?
-	
-		// Get a full list of stock symbols from IEX
-		/*
-		axios.get('https://api.iextrading.com/1.0/ref-data/symbols')
-				.then(response => {
-					this.setState({symbolsList: response.data});
-					console.log(this.state.symbolsList);
-				})
-				*/
 	}
 
-	/*
-	componentDidMount() {
-		let data = this.props.getSymbolsList().payload; // what state are we using? where is the data? 
-		this.setState({ symbolsList: data });
-	}
-	*/
 	componentDidMount() {
 		this.props.requestSymbolsList();
 		this.setState({
-			symbolsList: this.props.actionSymbolsList.reducerSymbolsList
+			symbolsList: this.props.actionSymbolsList
 		})
 	}
 
