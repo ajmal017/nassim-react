@@ -1,17 +1,27 @@
-import { GET_SYMBOLS_LIST, GO_TO_STOCK } from '../actions/search-actions';
+import { 
+	REQUEST_SYMBOLS_LIST,
+	RECEIVE_SYMBOLS_LIST,
+	REDIRECT_TO_STOCK_SYMBOL 
+} from '../actions/search-actions';
 
 const initialState = {
-	symbolsList: ''
+	symbolsList: '',
+	isFetching: false
 }
 
 export const searchReducer = (state=initialState, action) => {
 	switch(action.type) {
-		case GET_SYMBOLS_LIST:
-			console.log('Execute `getSymbolsList` in Action.')
+		case REQUEST_SYMBOLS_LIST:
+			console.log('Execute `receiveSymbolsList` in Action.')
 			return Object.assign({}, state, {
-				symbolsList: action.payload
+				isFetching: true
 			});
-		case GO_TO_STOCK:
+		case RECEIVE_SYMBOLS_LIST:
+			return Object.assign({}, state, {
+				isFetching: false,
+				symbolsList: action.payload
+			})
+		case REDIRECT_TO_STOCK_SYMBOL:
 			// do something
 			return Object.assign({}, state, {});
 		default:

@@ -20,20 +20,11 @@ export function receiveTransactionHistory(transactionData) {
 	}
 }
 
-
-// TODO this weekend
-// (1)
-// to validate
-// figure out account and portfolio first
 // Backend
-
 // TODO in backend
-// (2)
-// buy -> reduce cash in Account
+// (2)buy -> reduce cash in Account
 // 	-> add quantity and value in portfolio
-
-// sell
-// -> add to cash in account
+// sell -> add to cash in account
 
 // VALIDATE_BUY_REQUEST
 function shouldExecuteBuy(buyRequestData, account) {

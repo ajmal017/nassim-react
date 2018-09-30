@@ -23,6 +23,9 @@ export default class StockContainer extends React.Component {
 			quantity: '',
 			totalValue: ''
 		}
+	}
+
+	componentDidMount() {
 		axios.get(`https://api.iextrading.com/1.0/stock/${this.state.symbol}/quote`)
 		.then(response => {
 			// ??? Why is `this` undefined?
@@ -97,24 +100,3 @@ export default class StockContainer extends React.Component {
 		)
 	}
 }
-/*
-const mapStateToProps = (state) => {
-	return {
-		 // state.transaction is from rootReducer in store.js
-		 // store.js is connected to this script through Provider
-		 // Provider encapsulates this Component
-		 // the key can be named anything
-		transaction: state.transactionReducer
-	}
-}
-// const mapDispatchToProps = () => {}
-// connect(mapStateToProps) connects redux state to component
-// does the same job as second param of connect() below
-
-// connect reducer and action with component
-// this.props.executeBuyTransaction will be usable by this component
-export default connect(mapStateToProps, { executeBuyTransaction, executeSellTransaction })(StockContainer) 
-// store’s dispatch method is automatically provided as a prop
-// `dispatch` connects redux actions to component
-// data transformation occurs in Action
-*/

@@ -6,6 +6,7 @@ import { getSymbolsList } from '../../actions/search-actions'; // ??? how to use
 import Autocomplete from 'react-autocomplete';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { requestSymbolsList } from '../../actions/search-actions'
 
 /*
 Search.propTypes = {
@@ -14,7 +15,7 @@ Search.propTypes = {
 }
 */
 
-export default class Search extends React.Component {
+class Search extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
@@ -42,6 +43,9 @@ export default class Search extends React.Component {
 		this.setState({ symbolsList: data });
 	}
 	*/
+	componentDidMount() {
+		this.props.requestSymbolsList();
+	}
 
 	handleChange(e) {
 		e.preventDefault();
@@ -61,7 +65,8 @@ export default class Search extends React.Component {
 			symbol: selected
 		})
 	}
-
+// ??? Stock is not inheriting when user selects a new stock in Search
+// ??? Search box disappears after this
 	render() {
 		if (this.state.redirect) {
 			return (
@@ -86,6 +91,13 @@ export default class Search extends React.Component {
 		)
 	}
 }
+
+const mapStateToProps = (rootReducerReduxState) => {
+	return {
+		symbolsList: rootReducerReduxState.searchReducer
+	}
+}
+export default connect(mapStateToProps, {requestSymbolsList})(Search)
 /*
 const mapStateToProps = (state) => {
 	return {
