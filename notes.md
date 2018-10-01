@@ -1,12 +1,12 @@
 # Notes
 ## TODO
 ### Frontend
-- [ ] Separate Components into Presentational and Container
-    - [ ] Stock
-    - [ ] Portfolio
-    - [ ] (Acocunt???)
+- [x] Separate Components into Presentational and Container
 - [ ] Move all axios code into Actions
-- [ ] Search Redux Thunk
+    - [?] Stock
+    - [?] Portfolio
+    - [ ] (Acocunt???)
+    - [x] Search
 - [ ] Charts: use charting library to render the chart
     - [ ] Display text data in Stock
     - [ ] render charts in stock

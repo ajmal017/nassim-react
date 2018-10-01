@@ -25,8 +25,17 @@ export default class StockContainer extends React.Component {
 		}
 	}
 
-	componentDidMount() {
-		axios.get(`https://api.iextrading.com/1.0/stock/${this.state.symbol}/quote`)
+	// TODO
+	// Actions
+	// Reducers
+	// axios inside action
+	// they will be called with different params (symbol)
+	// update component to use props
+
+	// First time mounting
+	componentDidMount() { // should receive data from Search
+		debugger
+		axios.get(`https://api.iextrading.com/1.0/stock/${this.props.match.params.symbol}/quote`)
 		.then(response => {
 			// ??? Why is `this` undefined?
 			//console.log(`latest price: ${response.data.latestPrice}`);
@@ -42,6 +51,26 @@ export default class StockContainer extends React.Component {
 			return
 		});
 	}
+	// Subsequently, every time path changes
+	componentWillReceiveProps(newProps) {
+		debugger
+		axios.get(`https://api.iextrading.com/1.0/stock/${newProps.match.params.symbol}/quote`)
+		.then(response => {
+			// ??? Why is `this` undefined?
+			//console.log(`latest price: ${response.data.latestPrice}`);
+			this.setState({
+				price: response.data.latestPrice,
+				name: response.data.companyName
+			});
+			console.log(`this.state inside axios: ${this.state}`)
+			return;
+		})
+		.catch(error => {
+			console.log(error);
+			return
+		});
+	}
+
 
 	handleChange(e) {
 		this.setState({
@@ -81,6 +110,7 @@ export default class StockContainer extends React.Component {
 	}
 
 	render() {
+		debugger
 		return (
 			<div>
 				<Stock {...this.state} />
@@ -100,3 +130,4 @@ export default class StockContainer extends React.Component {
 		)
 	}
 }
+

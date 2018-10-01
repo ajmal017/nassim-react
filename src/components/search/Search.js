@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { getSymbolsList } from '../../actions/search-actions'; // ??? how to use this in constructor?
 import Autocomplete from 'react-autocomplete';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { requestSymbolsList } from '../../actions/search-actions'
 
@@ -24,22 +24,18 @@ class Search extends React.Component {
 			searchTerm: '',
 			symbolsList: [],
 			renderData: [],
-			redirect: false,
 			symbol: ''
 		}
 	}
 
 	componentDidMount() {
-		this.props.requestSymbolsList();
-		this.setState({
-			symbolsList: this.props.actionSymbolsList
-		})
+		this.props.requestSymbolsList(); // point to props not state
 	}
 
 	handleChange(e) {
 		e.preventDefault();
 		this.setState({searchTerm: e.target.value});
-		let selections = this.state.symbolsList.filter((entry, index, array) => {
+		let selections = this.props.symbolsList.reducerSymbolsList.filter((entry, index, array) => {
 			return (
 				entry.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
 				|| entry.symbol.toLowerCase().includes(this.state.searchTerm.toLowerCase())
@@ -49,19 +45,12 @@ class Search extends React.Component {
 	}
 	handleSelect(selected) {
 		console.log(selected);
-		this.setState({
-			redirect: true,
-			symbol: selected
-		})
+		debugger
+		this.props.history.push(`/stock/${selected}`);
 	}
 // ??? Stock is not inheriting when user selects a new stock in Search
 // ??? Search box disappears after this
 	render() {
-		if (this.state.redirect) {
-			return (
-				<Redirect to={`/stock/${this.state.symbol}`} />
-			)
-		}
 		return (
 			<div>
 				<Autocomplete
@@ -86,7 +75,9 @@ const mapStateToProps = (rootReducerReduxState) => {
 		symbolsList: rootReducerReduxState.searchReducer
 	}
 }
-export default connect(mapStateToProps, {requestSymbolsList})(Search)
+export default withRouter(
+	connect(mapStateToProps, {requestSymbolsList})(Search)
+)
 /*
 const mapStateToProps = (state) => {
 	return {
@@ -98,4 +89,10 @@ const mapStateToProps = (state) => {
 	}
 }
 export default connect(mapStateToProps, { getSymbolsList })(Search)
+
+
+
+return (
+				<Redirect to={`/stock/${this.state.symbol}`} />
+			)
 */
