@@ -5,7 +5,7 @@
 - [ ] Move all axios code into Actions
     - [?] Stock
     - [?] Portfolio
-    - [ ] (Acocunt???)
+    - [ ] (Account???)
     - [x] Search
 - [ ] Charts: use charting library to render the chart
     - [ ] Display text data in Stock

@@ -2,8 +2,7 @@
 import React from 'react';
 
 export default function Stock(props)  {
-	console.log(`Stock props symbol: ${props.symbol}`)
-	// props is undefined
+	console.log(`Stock props.symbol: ${props.symbol}`)
 		return (
 			<div>
 				<h1>Stock</h1>

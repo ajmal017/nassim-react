@@ -1,19 +1,11 @@
 // Container component
 import React from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import { getSymbolsList } from '../../actions/search-actions'; // ??? how to use this in constructor?
 import Autocomplete from 'react-autocomplete';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { requestSymbolsList } from '../../actions/search-actions'
-
-/*
-Search.propTypes = {
-	handleChange: PropTypes.func.isRequired,
-	handleSelect: PropTypes.func.isRequired
-}
-*/
 
 class Search extends React.Component {
 	constructor(props) {
@@ -44,8 +36,7 @@ class Search extends React.Component {
 		this.setState({ renderData: selections })
 	}
 	handleSelect(selected) {
-		console.log(selected);
-		debugger
+		console.log(`Search handelSelect() ${selected}`);
 		this.props.history.push(`/stock/${selected}`);
 	}
 // ??? Stock is not inheriting when user selects a new stock in Search
@@ -78,21 +69,3 @@ const mapStateToProps = (rootReducerReduxState) => {
 export default withRouter(
 	connect(mapStateToProps, {requestSymbolsList})(Search)
 )
-/*
-const mapStateToProps = (state) => {
-	return {
-		 // state.transaction is from rootReducer in store.js
-		 // store.js is connected to this script through Provider
-		 // Provider encapsulates this Component
-		 // the key can be named anything
-		search: state.searchReducer
-	}
-}
-export default connect(mapStateToProps, { getSymbolsList })(Search)
-
-
-
-return (
-				<Redirect to={`/stock/${this.state.symbol}`} />
-			)
-*/

@@ -10,7 +10,7 @@ import thunkMiddleware from 'redux-thunk';
 const rootReducer = combineReducers({
 	//accountReducer: accountReducer,
 	searchReducer: searchReducer,
-	//stockReducer: stockReducer,
+	stockReducer: stockReducer,
 	transactionReducer: transactionReducer
 });
 

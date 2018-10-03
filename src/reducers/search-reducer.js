@@ -20,7 +20,7 @@ export const searchReducer = (state=initialState, action) => {
 			return Object.assign({}, state, {
 				isFetching: false,
 				reducerSymbolsList: action.payload
-			})
+			});
 		case REDIRECT_TO_STOCK_SYMBOL:
 			// do something
 			return Object.assign({}, state, {});
