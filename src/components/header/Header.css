@@ -1,3 +1,9 @@
 h1 {
 	font-size: 5em;
 }
+
+ul>li {
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}

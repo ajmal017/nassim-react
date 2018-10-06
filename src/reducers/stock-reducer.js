@@ -5,7 +5,8 @@ import {
 
 const initialState = {
 	reducerStockData: [],
-	isFecthing: false
+	isFetching: true,
+	isFetched: false
 }
 
 export const stockReducer = (state=initialState, action) => {
@@ -13,11 +14,13 @@ export const stockReducer = (state=initialState, action) => {
 		case REQUEST_STOCK_DATA:
 			console.log('Execute `requestStockData` in Action.')
 			return Object.assign({}, state, {
-			isFetching: true
+				isFetched: false,
+				isFetching: true
 			});
 		case RECEIVE_STOCK_DATA:
 			return Object.assign({}, state, {
 				isFetching: false,
+				isFetched: true,
 				reducerStockData: action.payload
 			});
 		default:

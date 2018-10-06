@@ -36,19 +36,22 @@ class StockContainer extends React.Component {
 			name: this.props.stockData.reducerStockData.companyName
 		})
 	}
-// ??? Doesn't stop running
+
 	componentWillReceiveProps(newProps) {
+		debugger
 		console.log(`componentWillReceiveProps(); newProps.match.params.symbol: ${newProps.match.params.symbol}; this.props.match.params.symbol: ${this.props.match.params.symbol}`);
-		if (newProps.match.params.symbol !== this.props.match.params.symbol) {
+		//if (newProps.match.params.symbol !== this.props.match.params.symbol) {}
+		if (!this.props.stockData.isFetched) {
 			this.props.requestStockData(newProps.match.params.symbol);
+		}
+			/*
 			this.setState({
 				symbol: this.props.stockData.reducerStockData.symbol,
 				price: this.props.stockData.reducerStockData.latestPrice,
 				name: this.props.stockData.reducerStockData.companyName
 			});
-		}
+			*/
 	}
-
 
 	handleChange(e) {
 		this.setState({
@@ -90,7 +93,7 @@ class StockContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				<Stock {...this.state} />
+				<Stock {...this.props} />
 				<form>
 					<FormGroup>
 						<FormControl
