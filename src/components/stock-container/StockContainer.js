@@ -12,7 +12,7 @@ class StockContainer extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.handleBuy = this.handleBuy.bind(this);
 		this.handleSell = this.handleSell.bind(this);
-		console.log(`symbol: ${props.match.params.symbol}`);
+		console.log(`in constructor symbol: ${props.match.params.symbol}`);
 
 		const currentDate = new Date();
 		this.state = {
@@ -26,23 +26,23 @@ class StockContainer extends React.Component {
 		}
 	}
 
+	
 	// First time mounting
 	componentDidMount() { // should receive data from Search
 		console.log(`componentDidMount(); this.props.match.params.symbol: ${this.props.match.params.symbol}`);
-		this.props.requestStockData(this.props.match.params.symbol);
-		this.setState({
-			symbol: this.props.match.params.symbol,
-			price: this.props.stockData.reducerStockData.latestPrice,
-			name: this.props.stockData.reducerStockData.companyName
-		})
-	}
 
+		this.props.requestStockData(this.props.match.params.symbol);
+	}
+	
+
+	// Didn't need to set local state
+	// props contain the data
 	componentWillReceiveProps(newProps) {
-		debugger
 		console.log(`componentWillReceiveProps(); newProps.match.params.symbol: ${newProps.match.params.symbol}; this.props.match.params.symbol: ${this.props.match.params.symbol}`);
-		//if (newProps.match.params.symbol !== this.props.match.params.symbol) {}
-		if (!this.props.stockData.isFetched) {
-			this.props.requestStockData(newProps.match.params.symbol);
+
+		// newProps.match.params.symbol is from the URL
+		if (this.props.stockData.reducerStockData.symbol !== newProps.match.params.symbol) {
+			this.props.requestStockData(newProps.match.params.symbol)
 		}
 			/*
 			this.setState({
@@ -93,7 +93,10 @@ class StockContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				<Stock {...this.props} />
+				{
+					this.props.stockData.isFetched &&
+					<Stock stockInfo={this.props.stockData.reducerStockData} />
+				}
 				<form>
 					<FormGroup>
 						<FormControl
