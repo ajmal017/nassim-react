@@ -1,6 +1,7 @@
 // Container component
 import React from 'react';
 import { Button, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
+import axios from 'axios';
 
 export default class Register extends React.Component {
 	constructor(props) {
@@ -37,6 +38,10 @@ export default class Register extends React.Component {
   }
   handleSubmit() {
     alert(this.state); // more later with AJAX and Redux
+    axios.post('/auth/register', {
+      email: this.state.email,
+      password: this.state.password
+    });
   }
     // After successful Login, hide Login and Register, show My Account
 	render() {

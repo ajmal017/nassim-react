@@ -2,6 +2,7 @@
 // https://redux.js.org/basics/usagewithreact#presentational-and-container-components
 import React from 'react';
 import { Button, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
+import axios from 'axios';
 
 export default class Login extends React.Component {
 	constructor(props) {
@@ -38,6 +39,10 @@ export default class Login extends React.Component {
   }
   handleSubmit() {
     alert(this.state); // more later with AJAX and Redux
+    axios.post('/auth/login', {
+      email: this.state.email,
+      password: this.state.password
+    })
   }
   // After successful Login, hide Login and Register, show My Account
 	render() {
