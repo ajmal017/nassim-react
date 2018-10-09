@@ -116,8 +116,13 @@ class StockContainer extends React.Component {
 
 const mapStateToProps = (rootReducerReduxState) => {
 	return {
-		stockData: rootReducerReduxState.stockReducer
+		stockData: rootReducerReduxState.stockReducer,
+		transactionData: rootReducerReduxState.transactionReducer
 	}
 }
 
-export default connect(mapStateToProps, {requestStockData})(StockContainer)
+export default connect(mapStateToProps, {
+	requestStockData,
+	executeBuyTransaction,
+	executeSellTransaction
+})(StockContainer);

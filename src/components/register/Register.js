@@ -36,12 +36,15 @@ export default class Register extends React.Component {
   handlePasswordChange(e) {
     this.setState({ password: e.target.value });
   }
-  handleSubmit() {
-    alert(this.state); // more later with AJAX and Redux
-    axios.post('/auth/register', {
+  handleSubmit(e) {
+    e.preventDefault();
+    debugger
+    axios.post('http://localhost:8080/auth/register', {
       email: this.state.email,
       password: this.state.password
-    });
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
   }
     // After successful Login, hide Login and Register, show My Account
 	render() {
