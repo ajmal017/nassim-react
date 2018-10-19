@@ -3,8 +3,8 @@ import Stock from '../stock/Stock';
 import axios from 'axios';
 import { FormGroup, FormControl, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { executeBuyTransaction, executeSellTransaction } from '../../actions/transaction-actions';
-import { requestStockData } from '../../actions/stock-actions';
+import { executeBuyTransaction, executeSellTransaction } from '../../actions/transaction-action';
+import { requestStockData } from '../../actions/stock-action';
 
 class StockContainer extends React.Component {
 	constructor(props) {

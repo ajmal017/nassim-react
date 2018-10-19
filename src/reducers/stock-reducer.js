@@ -1,7 +1,7 @@
 import {
 	REQUEST_STOCK_DATA,
 	RECEIVE_STOCK_DATA
-} from '../actions/stock-actions';
+} from '../actions/stock-action';
 
 const initialState = {
 	reducerStockData: [],

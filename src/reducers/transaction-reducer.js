@@ -8,7 +8,7 @@ import {
 	EXECUTE_SELL_TRANSACTION,
 	ANNOUNCE_TRANSACTION_COMPLETION
 	// ANNOUNCE_TRANSACTION_COMPLETION
-} from "../actions/transaction-actions";
+} from "../actions/transaction-action";
 
 // Define initial State
 const initialState = {

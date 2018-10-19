@@ -2,32 +2,33 @@
 Based on this [tutorial](http://jakesidsmith.com/blog/post/2017-11-18-redux-and-react-an-introduction/).
 
 ## Recipe for Redux with Thunk
-1. In `Reducer`:
+1. In `Index`:
+    - Import `Provider`
+    - Place `<Provider>` as a param inside `ReactDOM.render`, before the other param `document.getElementById('root')`
+    - Set `<Provider>` attribute `store` value to `Store` 
+2. In `Store`:
+    - Import `Reducer`s, `combineReducers`, `createStore` (if using middleware, import `applyMiddleware`, `thunk`)
+    - `combineReducers()` all `Reducer`s
+    - `createStore` with param `rootReducer` (if using middleware, add `applyMiddleware(thunk)` in param); 
+    - Export `Store`
+3. In `Reducer`:
     - Import `Action`s
     - Define `initialState`
     - Define `export` `Reducer` function as a series of `switch`/`case` `Action`s
     - Fill in `initialState` with whatever data `Action`s need to use
-2. In `Store`:
-    - Import `Reducer`s, `combineReducers`, `createStore`, `applyMiddleware`, `thunk`
-    - `combineReducers()` all `Reducer`s
-    - `createStore` with params `rootReducer` and `applyMiddleware(thunk)`
-    - Export `Store`
-3. In `Index`:
-    - Import `Provider`
-    - Stick `<Provider>`, with `store` attribute value `Store`, inside `ReactDOM.render`
 4. In `Action`:
     - Define `ACTION` in upper case, with `type` and some stuffing
-    - Define `export` function `actionFunction` under each `ACTION` with same name camel case
+    - Define `export` function `actionFunction` under each `ACTION` with same name in camel case
     - Inside `actionFunction`, return an anonymous function with `dispatch` as param
-    - Inside anonymous function, make an async call
+    - Inside anonymous function, make an async call or do some other data transformation
     - Inside the `then` promise of the async call, `dispatch` that `actionFunction`
 5. In `Component`:
     - Import `actionFunction`, `connect`
     - `mapStateToProps()` the `rootReducer` state from `Store`
-    - Return an object with whatever key and the `Store.rootReducer.Reducer`
+    - Return an object with arbitrary key name and the `Store.rootReducer.Reducer`
     - `connect` `mapStateToProps` and `actionFunction` with `Component`
 
-## Gory Details (without thunk)
+## Redux Recipe With Gory Details (without middleware)
 ### `Action`
 1. Define **`Action`**
 2. Export for use in **`Reducer`**
@@ -120,3 +121,23 @@ const mapStateToProps = (state) => {
 }
 export default connect(mapStateToProps, getTransactions)(TransactionContainer);
 ```
+## Redux Flow
+1. function call in component triggers action
+2. when action returns, triggers reducer
+    - the reducer is the callback of the action
+    - action automatically calls reducer with 'magic' in redux
+    - if not using redux, have to code this step yourself
+3. when reducer is triggered, redux state changes
+4. redux state change is passed to component
+5. react rerenders component using new redux state
+
+- control that redux takes away:
+    - helper functions
+    - other complexities
+- not needing redux:
+landing page - only rendering
+use redux:
+CRM with http calls
+- alternatives to redux:
+    - mobx
+    - RxJS

@@ -1,11 +1,11 @@
 // Container component
 import React from 'react';
 import axios from 'axios';
-import { getSymbolsList } from '../../actions/search-actions'; // ??? how to use this in constructor?
+import { getSymbolsList } from '../../actions/search-action'; // ??? how to use this in constructor?
 import Autocomplete from 'react-autocomplete';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { requestSymbolsList } from '../../actions/search-actions'
+import { requestSymbolsList } from '../../actions/search-action'
 
 class Search extends React.Component {
 	constructor(props) {

@@ -2,7 +2,7 @@ import {
 	REQUEST_SYMBOLS_LIST,
 	RECEIVE_SYMBOLS_LIST,
 	REDIRECT_TO_STOCK_SYMBOL 
-} from '../actions/search-actions';
+} from '../actions/search-action';
 
 const initialState = {
 	reducerSymbolsList: [],

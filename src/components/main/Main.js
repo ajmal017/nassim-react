@@ -27,3 +27,5 @@ export default class Main extends React.Component {
 		)
 	}
 }
+// ??? If user not logged in, Route path '/' should be Landing.
+// If user logged in, Rouge path '/' should be Home.

@@ -1,10 +1,11 @@
-import thunk from 'redux-thunk';
+//import thunk from 'redux-thunk';
+import 'redux-thunk';
 import axios from 'axios';
 
 export const REQUEST_TRANSACTION_HISTORY = 'REQUEST_TRANSACTION_HISTORY';
 export function requestTransactionHistory() {
 	return function (dispatch) {
-		const getTransactionHistoryRequest = axios.get(`http://localhost:8080/transaction/all`)
+		axios.get(`http://localhost:8080/transaction/all`)
 			.then(response => {
 				dispatch(receiveTransactionHistory(response.data));
 			})
@@ -56,7 +57,7 @@ export const EXECUTE_BUY_TRANSACTION = 'EXECUTE_BUY_TRANSACTION';
 export function executeBuyTransaction(buyRequestData) {
 	console.log('Execute `Buy` transaction inside Action.');
 	return function (dispatch) {
-		const postBuyTransactionRequest = axios.post('http://localhost:8080/transaction/all', buyRequestData)
+		axios.post('http://localhost:8080/transaction/all', buyRequestData)
 			.then(response => {
 				dispatch(announceTransactionCompletion(response.data));
 			})
@@ -76,7 +77,7 @@ export const EXECUTE_SELL_TRANSACTION = 'EXECUTE_SELL_TRANSACTION';
 export function executeSellTransaction(sellRequestData) {
 	console.log('Execute `Sell` transaction inside Action.')
 	return function (dispatch) {
-		const postSellTransactionRequest = axios.post('http://localhost:8080/transaction/all', sellRequestData)
+	axios.post('http://localhost:8080/transaction/all', sellRequestData)
 		.then(response => {
 			dispatch(announceTransactionCompletion(response.data))
 		})

@@ -3,7 +3,12 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { transactionReducer } from './reducers/transaction-reducer';
 import { stockReducer } from './reducers/stock-reducer';
 import { searchReducer } from './reducers/search-reducer';
+import { registerReducer } from './reducers/register-reducer';
+import { loginReducer } from './reducers/login-reducer';
 import thunkMiddleware from 'redux-thunk';
+
+// Store creates and maintains the state of reducers and actions
+// rootReducer is the state of all components
 
 // Create Store and combine all Reducers
 // This is the REDUX STATE
@@ -11,7 +16,9 @@ const rootReducer = combineReducers({
 	//accountReducer: accountReducer,
 	searchReducer: searchReducer,
 	stockReducer: stockReducer,
-	transactionReducer: transactionReducer
+	transactionReducer: transactionReducer,
+	registerReducer: registerReducer,
+	loginReducer: loginReducer
 });
 
 // Store States of Reducers
@@ -23,3 +30,4 @@ const Store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 // Export Store for use
 export default Store;
+

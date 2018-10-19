@@ -2,8 +2,12 @@
 import React from 'react';
 import { Button, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import {
+  makeRegisterPostRequest
+} from '/Users/Leo/nassim-react/src/actions/register-action.js';
 
-export default class Register extends React.Component {
+class Register extends React.Component {
 	constructor(props) {
 		super(props)
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -12,7 +16,6 @@ export default class Register extends React.Component {
     this.getPasswordValidationState = this.getPasswordValidationState.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 		this.state = {
-			show: false,
       email: '',
       password: ''
 		}
@@ -38,15 +41,12 @@ export default class Register extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    debugger
-    axios.post('http://localhost:8080/auth/register', {
-      email: this.state.email,
-      password: this.state.password
-    })
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+    const registerData = this.state;
+    // passes this.state to action for transformation
+    this.props.makeRegisterPostRequest(registerData);
   }
-    // After successful Login, hide Login and Register, show My Account
+    // ??? After successful Login, hide Login and Register, show My Account
+  
 	render() {
 		return(
       <form onSubmit={this.handleSubmit}> 
@@ -77,3 +77,9 @@ export default class Register extends React.Component {
 		)
 	}
 }
+const mapStateToProps = (rootReducerReduxState) => {
+  return {
+    registerState: rootReducerReduxState.registerReducer
+  }
+}
+export default connect(mapStateToProps, {makeRegisterPostRequest})(Register)
