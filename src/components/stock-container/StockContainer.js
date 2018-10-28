@@ -17,7 +17,6 @@ class StockContainer extends React.Component {
 		const currentDate = new Date();
 		this.state = {
 			date: currentDate.toString(),
-			transactionType: '',
 			symbol: props.match.params.symbol, // TODO: should receive this value from Search component
 			name: '',
 			price: '', // TODO: display 2-decimal-point float in render
@@ -32,6 +31,9 @@ class StockContainer extends React.Component {
 		console.log(`componentDidMount(); this.props.match.params.symbol: ${this.props.match.params.symbol}`);
 
 		this.props.requestStockData(this.props.match.params.symbol);
+		this.setState({
+			price: this.props.match.params.latestPrice
+		})
 	}
 	
 
@@ -44,13 +46,11 @@ class StockContainer extends React.Component {
 		if (this.props.stockData.reducerStockData.symbol !== newProps.match.params.symbol) {
 			this.props.requestStockData(newProps.match.params.symbol)
 		}
-			/*
-			this.setState({
-				symbol: this.props.stockData.reducerStockData.symbol,
-				price: this.props.stockData.reducerStockData.latestPrice,
-				name: this.props.stockData.reducerStockData.companyName
-			});
-			*/
+		this.setState({
+			symbol: this.props.stockData.reducerStockData.symbol,
+			price: this.props.stockData.reducerStockData.latestPrice,
+			name: this.props.stockData.reducerStockData.companyName
+		});
 	}
 
 	handleChange(e) {
@@ -64,6 +64,7 @@ class StockContainer extends React.Component {
 		e.preventDefault();
 		//alert(`Sell ${this.state.quantity} shares of ${this.state.symbol}`);
 		const sellRequestData = {
+			account: localStorage.getItem('userId'),
 			date: this.state.date,
 			type: 'sell',
 			symbol: this.state.symbol,
@@ -78,6 +79,7 @@ class StockContainer extends React.Component {
 	handleBuy(e) {
 		e.preventDefault();
 		const buyRequestData = {
+			account: localStorage.getItem('userId'),
 			date: this.state.date,
 			type: 'buy',
 			symbol: this.state.symbol,

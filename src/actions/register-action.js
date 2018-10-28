@@ -8,6 +8,7 @@ export function makeRegisterPostRequest(registerRequestData) {
 	return function (dispatch) {
     axios.post('http://localhost:8080/auth/register', registerRequestData)
     .then(res => {
+      console.log(JSON.stringify(res.data.message));
       // dispatch response to reducer
       dispatch({
         type: RECEIVE_RESPONSE_FROM_REGISTER_POST_REQUEST,

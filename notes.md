@@ -88,3 +88,17 @@
 
 ## Trade Lifecycle
 - [Ten stages](https://www.allaboutfinancecareers.co.uk/industry/infrastructure/the-trade-life-cycle-explained)
+
+# Login Auth Flow
+- User enter email and password
+- makes post call to /auth/login
+    - Login component makes the axios.post call to /auth/login
+    - auth.controller.login() generates token
+    - login-action saves token, email, userid etc in local storate
+
+When a user is making a call that calls verifyToken
+e.g. get all Transactions:
+- transaction-action makes GET call with token from storage
+- in the route get(/all), verifyToken is called
+- verifyToken creates a variable req.user
+- req.user is used in the get request, only getting transactions by that user.

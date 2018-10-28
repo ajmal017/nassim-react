@@ -8,7 +8,8 @@ class TransactionContainer extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			transactions: []
+			transactions: [],
+			account: localStorage.getItem('userId')
 			// ??? is this being used at all?
 		}
 	}
@@ -51,7 +52,7 @@ const mapStateToProps = (rootReducerReduxState) => { // ??? is this the `state` 
 	}
 }
 // ??? why am I not using this?
-const mapDispatchToProps = () => {}
+// const mapDispatchToProps = () => {}
 
 // connect(mapStateToProps) connects Redux state to component
 // first param `mapStateToProps` connect "mapping of Redux state to component pros" to the `TransactionContainer` component

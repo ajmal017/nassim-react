@@ -5,7 +5,7 @@ import axios from 'axios';
 export const REQUEST_TRANSACTION_HISTORY = 'REQUEST_TRANSACTION_HISTORY';
 export function requestTransactionHistory() {
 	return function (dispatch) {
-		axios.get(`http://localhost:8080/transaction/all`)
+		axios.get(`http://localhost:8080/transaction/all/${localStorage.getItem('token')}`)
 			.then(response => {
 				dispatch(receiveTransactionHistory(response.data));
 			})
@@ -57,7 +57,7 @@ export const EXECUTE_BUY_TRANSACTION = 'EXECUTE_BUY_TRANSACTION';
 export function executeBuyTransaction(buyRequestData) {
 	console.log('Execute `Buy` transaction inside Action.');
 	return function (dispatch) {
-		axios.post('http://localhost:8080/transaction/all', buyRequestData)
+		axios.post(`http://localhost:8080/transaction/all/${localStorage.getItem('token')}`, buyRequestData)
 			.then(response => {
 				dispatch(announceTransactionCompletion(response.data));
 			})
@@ -77,7 +77,7 @@ export const EXECUTE_SELL_TRANSACTION = 'EXECUTE_SELL_TRANSACTION';
 export function executeSellTransaction(sellRequestData) {
 	console.log('Execute `Sell` transaction inside Action.')
 	return function (dispatch) {
-	axios.post('http://localhost:8080/transaction/all', sellRequestData)
+	axios.post(`http://localhost:8080/transaction/all/${localStorage.getItem('token')}`, sellRequestData)
 		.then(response => {
 			dispatch(announceTransactionCompletion(response.data))
 		})
