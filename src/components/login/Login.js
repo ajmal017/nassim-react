@@ -44,9 +44,12 @@ class Login extends React.Component {
     e.preventDefault();
     const loginRequestData = this.state;
     this.props.makeLoginPostRequest(loginRequestData);
-
+    if (localStorage.getItem('token')) {
+      debugger
+      this.history.push('/home');
+    }
   }
-  // After successful Login, hide Login and Register, show My Account
+
 	render() {
 		return(
 			<form onSubmit={this.handleSubmit}> 

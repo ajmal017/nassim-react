@@ -8,24 +8,27 @@ export default class Account extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			email: 'alice@wonderland.com',
-			password: '12345678',
+			email: '',
+			password: '',
 			cash: 100000,
 			assets: 200000
 		}
-		// (note 1) http request to backend account.controller
-		// GET always call backend route
-		axios.get('http://localhost:8080/account/auth/google')
-  		.then(response => {
-			// handle success
-				//window.location.href = 'http://localhost'
-    		console.log(response);
-  		})
-  		.catch(error => {
-    	// handle error
-    		console.log(error);
-  		})
 	}
+
+	// Once logged in:
+	// get email
+	// get password and mask password
+	/*
+	this.setState({
+		email: email,
+		password: passwordMasked
+	})
+	*/ 
+	
+	// Display email
+	// Display password with mask
+	// Provide option to change password
+	// Provide option to change email
 
 	render() {
 		return (

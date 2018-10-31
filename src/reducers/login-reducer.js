@@ -1,7 +1,8 @@
 // import actions
 import {
 	MAKE_LOGIN_POST_REQUEST,
-	RECEIVE_RESPONSE_FROM_LOGIN_POST_REQUEST
+	RECEIVE_RESPONSE_FROM_LOGIN_POST_REQUEST,
+	LOGOUT
 } from '../actions/login-action';
 // define initial state
 const initialState = {
@@ -16,6 +17,11 @@ export const loginReducer = (state=initialState, action) => {
 				isLoggedIn: true,
 				loginRequestData: action.payload
 			});
+		case LOGOUT:
+			return Object.assign({}, state, {
+				isLoggedIn: false,
+				loginRequestData: {}
+			})
 		default:
 			return state;
 	}

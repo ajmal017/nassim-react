@@ -29,3 +29,14 @@ export function receiveResponseFromLoginPostRequest(loginRequestData) {
 		payload: loginRequestData
 	}
 }
+
+export const LOGOUT = 'LOGOUT';
+export function logOut() {
+	debugger
+	localStorage.removeItem('email');
+	localStorage.removeItem('token');
+	localStorage.removeItem('userId');
+	return {
+		type: LOGOUT
+	}
+}

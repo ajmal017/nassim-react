@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import {
   makeRegisterPostRequest
 } from '/Users/Leo/nassim-react/src/actions/register-action.js';
+import { makeLoginPostRequest } from '../../actions/login-action';
 
 class Register extends React.Component {
 	constructor(props) {
@@ -44,9 +45,12 @@ class Register extends React.Component {
     const registerData = this.state;
     // passes this.state to action for transformation
     this.props.makeRegisterPostRequest(registerData);
+    this.props.makeLoginPostRequest(registerData);
+    // this.props.someFunction allows it to be used by `connect` and use Redux
   }
-    // ??? After successful Login, hide Login and Register, show My Account
-  
+
+// Using Redux any component can communicate with the state. In other words any component can communicate with each other.
+
 	render() {
 		return(
       <form onSubmit={this.handleSubmit}> 
