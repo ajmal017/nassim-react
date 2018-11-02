@@ -44,10 +44,12 @@ class Login extends React.Component {
     e.preventDefault();
     const loginRequestData = this.state;
     this.props.makeLoginPostRequest(loginRequestData);
+    // ??? Not working
+    debugger
     if (localStorage.getItem('token')) {
-      debugger
       this.history.push('/home');
     }
+    // tell Auth to hide modal
   }
 
 	render() {

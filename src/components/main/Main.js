@@ -2,6 +2,7 @@
 // https://redux.js.org/basics/usagewithreact#presentational-and-container-components
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+
 import Home from '../home/Home';
 import Landing from '../landing/Landing';
 import Auth from '../auth/Auth';
@@ -27,5 +28,6 @@ export default class Main extends React.Component {
 		)
 	}
 }
+
 // ??? If user not logged in, Route path '/' should be Landing.
 // If user logged in, Route path '/' should be Home.

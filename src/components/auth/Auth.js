@@ -1,11 +1,15 @@
 // Container component
 // https://redux.js.org/basics/usagewithreact#presentational-and-container-components
 import React from 'react';
+import { connect } from 'react-redux';
+import { Button, Modal, Tabs, Tab } from 'react-bootstrap';
+import { Redirect } from 'react-router';
+
 import Register from '../register/Register';
 import Login from '../login/Login';
-import { Button, Modal, Tabs, Tab } from 'react-bootstrap';
+import { makeLoginPostRequest, logOut } from '../../actions/login-action';
 
-export default class Auth extends React.Component {
+class Auth extends React.Component {
 	constructor(props, context) {
     super(props, context);
 		this.handleHide = this.handleHide.bind(this);
@@ -28,6 +32,13 @@ export default class Auth extends React.Component {
   }
 
   render() {
+    if (this.props.loginState.isLoggedIn) {
+			debugger
+			return (
+        // same as this.props.history.push()
+				<Redirect to="/home" />
+			)
+		}
     return (
 			<div className="modal-container" style={{ height: 200 }}>
         <Button
@@ -79,3 +90,9 @@ export default class Auth extends React.Component {
     );
   }
 }
+const mapStateToProps = (rootReducerReduxState) => {
+  return {
+    loginState: rootReducerReduxState.loginReducer
+  }
+}
+export default connect(mapStateToProps, {makeLoginPostRequest, logOut})(Auth)

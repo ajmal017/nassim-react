@@ -2,13 +2,18 @@
 // https://redux.js.org/basics/usagewithreact#presentational-and-container-components
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import './Header.css';
 import Auth from '../auth/Auth';
 import Search from '../search/Search';
 import Logout from '../logout/Logout';
+import { makeLoginPostRequest, logOut } from '../../actions/login-action';
 
-export default class Header extends React.Component {
+class Header extends React.Component {
 	render() {
+
 		if (localStorage.getItem('token')) {
 			return (
 			<div>
@@ -43,3 +48,11 @@ export default class Header extends React.Component {
 		}
 	}
 }
+const mapStateToProps = (rootReducerReduxState) => {
+  return {
+    loginState: rootReducerReduxState.loginReducer // this component can use `loginState` as props
+  }
+}
+export default withRouter(
+	connect(mapStateToProps, {makeLoginPostRequest, logOut})(Header)
+) 

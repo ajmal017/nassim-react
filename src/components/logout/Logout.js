@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { logOut } from '../../actions/login-action';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { logOut } from '../../actions/login-action';
 
 class Logout extends React.Component {
 	doLogout() {
