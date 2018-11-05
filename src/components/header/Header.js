@@ -24,7 +24,10 @@ class Header extends React.Component {
 						<Link to='/home'>Home</Link>
 					</li>
 					<li>
-						<Link to='/portfolio'>My Portfolio</Link>
+						<Link to='/portfolio'>Portfolio</Link>
+					</li>
+					<li>
+						<Link to='/transactions'>Transactions</Link>
 					</li>
 					<li>
 						<Link to='/account'>My Account</Link>

@@ -5,7 +5,11 @@ import axios from 'axios';
 export const REQUEST_TRANSACTION_HISTORY = 'REQUEST_TRANSACTION_HISTORY';
 export function requestTransactionHistory() {
 	return function (dispatch) {
-		axios.get(`http://localhost:8080/transaction/all/${localStorage.getItem('token')}`)
+		debugger
+		axios.get(`http://localhost:8080/transaction/all/${localStorage.getItem('token')}`,
+		{
+			account: localStorage.getItem('userId')
+		})
 			.then(response => {
 				dispatch(receiveTransactionHistory(response.data));
 			})

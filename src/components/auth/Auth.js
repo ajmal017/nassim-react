@@ -3,7 +3,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal, Tabs, Tab } from 'react-bootstrap';
-import { Redirect } from 'react-router';
 
 import Register from '../register/Register';
 import Login from '../login/Login';
@@ -32,13 +31,6 @@ class Auth extends React.Component {
   }
 
   render() {
-    if (this.props.loginState.isLoggedIn) {
-			debugger
-			return (
-        // same as this.props.history.push()
-				<Redirect to="/home" />
-			)
-		}
     return (
 			<div className="modal-container" style={{ height: 200 }}>
         <Button

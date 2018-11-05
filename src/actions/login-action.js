@@ -12,7 +12,6 @@ export function makeLoginPostRequest(loginRequestData) {
 			window.localStorage.setItem('email', res.data.data.email);
 			window.localStorage.setItem('userId', res.data.data.userId);
 			window.localStorage.setItem('token', res.data.data.token);
-			debugger
 			dispatch({
 				type: RECEIVE_RESPONSE_FROM_LOGIN_POST_REQUEST,
 				payload: res.data

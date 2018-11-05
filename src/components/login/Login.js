@@ -1,6 +1,7 @@
 // Container component
 // https://redux.js.org/basics/usagewithreact#presentational-and-container-components
 import React from 'react';
+import { Redirect } from 'react-router';
 import { Button, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 import {
   makeLoginPostRequest,
@@ -45,14 +46,18 @@ class Login extends React.Component {
     const loginRequestData = this.state;
     this.props.makeLoginPostRequest(loginRequestData);
     // ??? Not working
-    debugger
-    if (localStorage.getItem('token')) {
-      this.history.push('/home');
-    }
+    // no token here
     // tell Auth to hide modal
   }
 
 	render() {
+    if (this.props.loginState.isLoggedIn) {
+      debugger
+			return (
+        // same as this.props.history.push()
+				<Redirect to="/home" />
+			)
+		}
 		return(
 			<form onSubmit={this.handleSubmit}> 
         <FormGroup controlId="formHorizontalLoginEmail" validationState={this.getEmailValidationState()} > 

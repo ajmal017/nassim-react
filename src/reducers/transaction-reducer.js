@@ -23,12 +23,10 @@ const initialState = {
 export const transactionReducer = (state=initialState, action) => { // Define State before entering Reducer
 	switch(action.type) {
 		case REQUEST_TRANSACTION_HISTORY:
-			debugger
 			return Object.assign({}, state, {
 				isFetching: true
 			});
 		case RECEIVE_TRANSACTION_HISTORY:
-			debugger
 			return Object.assign({}, state, {
 				isFetching: false,
 				reducerTransactionData: action.payload
