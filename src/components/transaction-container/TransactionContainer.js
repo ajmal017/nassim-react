@@ -1,6 +1,6 @@
 // Container component?
 import React from 'react';
-//import './TransactionContainer.css';
+import './TransactionContainer.css';
 import Transaction from '../transaction/Transaction';
 import { connect } from 'react-redux';
 import { requestTransactionHistory } from '/Users/Leo/nassim-react/src/actions/transaction-action';

@@ -6,7 +6,6 @@ import { logOut } from '../../actions/login-action';
 
 class Logout extends React.Component {
 	doLogout() {
-		debugger
 		this.props.logOut();
 		this.props.history.push('/')
 	}

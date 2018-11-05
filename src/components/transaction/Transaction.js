@@ -1,6 +1,6 @@
 // Presentation component
 import React from 'react';
-//import './Transaction.css';
+import './Transaction.css';
 
 export default function Transaction(props) {
 		// currency format:
