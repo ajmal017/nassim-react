@@ -10,7 +10,7 @@ import Auth from '../auth/Auth';
 import About from '../about/About';
 import Account from '../account/Account';
 import TransactionContainer from '../transaction-container/TransactionContainer';
-import Portfolio from '../portfolio/Portfolio';
+import PortfolioContainer from '../portfolio-container/PortfolioContainer';
 import StockContainer from '../stock-container/StockContainer';
 
 export default class Main extends React.Component {
@@ -24,7 +24,7 @@ export default class Main extends React.Component {
 				<Route path='/about' component={About} />
 				<Route path='/account' component={Account} />
 				<Route path='/transactions' component={TransactionContainer} />
-				<Route path='/portfolio' component={Portfolio} />
+				<Route path='/portfolio' component={PortfolioContainer} />
 				<Route path='/stock/:symbol' component={StockContainer} />
 			</Switch>
 			</div>

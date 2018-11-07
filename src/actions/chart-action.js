@@ -4,7 +4,7 @@ import ReduxThunk from 'redux-thunk';
 export const REQUEST_CHART_DATA = 'REQUEST_CHART_DATA';
 export function requestChartData(symbol) {
 	return function (dispatch) {
-		const getChartData = axios.get(`https://api.iextrading.com/1.0/stock/${symbol}/chart/1d`)
+		const getChartData = axios.get(`https://api.iextrading.com/1.0/stock/${symbol}/chart/1m`)
 				.then(response => {
 					dispatch({
 						type: RECEIVE_CHART_DATA,

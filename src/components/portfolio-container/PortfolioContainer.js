@@ -1,7 +1,8 @@
 import React from 'react';
+import axios from 'axios';
 import Portfolio from '../portfolio/Portfolio';
 
-export default class PortfolioContainer extends ReactComponent {
+export default class PortfolioContainer extends React.Component {
 	constructor(props) {
 		super(props)
 		const currentDate = new Date();
@@ -14,9 +15,34 @@ export default class PortfolioContainer extends ReactComponent {
 			value: 1000000,
 			dayAgo: dayAgo.toString(),
 			weekAgo: weekAgo.toString(),
-			monthAgo: monthAgo.toString()
-		}
+			monthAgo: monthAgo.toString(),
+			portfolio: []
+		};
+		let collection = [];
+		axios.get(`http://localhost:8080/portfolio/${localStorage.token}`, {
+			account: localStorage.getItem('userId')
+		})
+				.then(response => {
+					console.log(`PortfolioContainer getPortfolio: ${JSON.stringify(response)}`);
+					
+					for (let key in response.data) {
+					// skip loop if the property is from prototype
+					if (!response.data.hasOwnProperty(key)) continue;
+					let obj = response.data[key];
+					for (let property in obj) {
+							// skip loop if the property is from prototype
+							if(!obj.hasOwnProperty(property)) continue;
+
+							// your code
+							console.log(key + " " + property + " = " + obj[property]);
+        
+    			}
+					}
+					
+					console.log(`collection: ${JSON.stringify(collection)}`);
+				});
 	}
+
 	render() {
 		return (
 			<div>

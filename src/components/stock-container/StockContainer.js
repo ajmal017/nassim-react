@@ -100,16 +100,20 @@ class StockContainer extends React.Component {
 	}
 
 	render() {
+		console.log(`this.props.stockData.reducerStockData: ${JSON.stringify(this.props.stockData.reducerStockData)}`)
 		return (
 			<div>
 				<div>
-				{
-					this.props.stockData.isFetched &&
-					<Stock stockInfo={this.props.stockData.reducerStockData} />
-				}
+					{
+						this.props.stockData.isFetched &&
+						<Stock stockInfo={this.props.stockData.reducerStockData} />
+					}
 				</div>
 				<div>
-					<StockChart chartInfo={this.props.stockData.reducerStockData} />
+					{
+						this.props.chartData.isFetched && 
+						<StockChart chartInfo={this.props.stockData.reducerStockData} />
+					}
 				</div>
 				<div>
 					<form>

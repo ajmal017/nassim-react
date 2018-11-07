@@ -13,22 +13,25 @@ export default class StockChart extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			chartInfo: props.chartInfo.symbol,
 			chartData: []
 		}
+		console.log(`props: ${JSON.stringify(props)}`);
 	}
 	componentDidMount() {
 		// ??? How to get props from StockContainer
-		const symbol = this.props.chartInfo.symbol;
+		const symbol = this.state.chartInfo;
+		console.log(`symbol: ${symbol}`)
 		let dataSet = [];
-		axios.get(`https://api.iextrading.com/1.0/stock/${symbol}/chart/1d`)
+		axios.get(`https://api.iextrading.com/1.0/stock/${symbol}/chart/1m`)
 				.then(res => {
 					console.log(`${JSON.stringify(res)}`);
 					res.data.map((val, i) => {
 						let entry = {
 							x: i,
-							y: val.marketAverage
+							y: val.close
 						};
-						console.log(val.marketAverage);
+						console.log(val.close);
 						dataSet.push(entry);
 					});
 					this.setState({
@@ -37,7 +40,6 @@ export default class StockChart extends React.Component {
 				});
 	}
 	render() {
-		
 		const dummyData = [
 			{x: 0, y: 8},
 			{x: 1, y: 5},
@@ -60,7 +62,7 @@ export default class StockChart extends React.Component {
 			<YAxis />
 			<HorizontalGridLines />
 			<VerticalGridLines />
-			<LineSeries data={dummyData} />
+			<LineSeries data={this.state.chartData} />
 			</XYPlot>
 		</div>
 		)	
