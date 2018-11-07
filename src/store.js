@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 // Import Reducers
 import { transactionReducer } from './reducers/transaction-reducer';
 import { stockReducer } from './reducers/stock-reducer';
+import { chartReducer } from './reducers/chart-reducer';
 import { searchReducer } from './reducers/search-reducer';
 import { registerReducer } from './reducers/register-reducer';
 import { loginReducer } from './reducers/login-reducer';
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
 	//accountReducer: accountReducer,
 	searchReducer: searchReducer,
 	stockReducer: stockReducer,
+	chartReducer: chartReducer,
 	transactionReducer: transactionReducer,
 	registerReducer: registerReducer,
 	loginReducer: loginReducer

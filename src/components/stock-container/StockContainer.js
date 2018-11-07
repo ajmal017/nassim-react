@@ -1,10 +1,13 @@
 import React from 'react';
+import './StockContainer.css';
 import Stock from '../stock/Stock';
+import StockChart from '../stock-chart/StockChart';
 import axios from 'axios';
 import { FormGroup, FormControl, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { executeBuyTransaction, executeSellTransaction } from '../../actions/transaction-action';
 import { requestStockData } from '../../actions/stock-action';
+import { requestChartData } from '../../actions/chart-action';
 
 class StockContainer extends React.Component {
 	constructor(props) {
@@ -31,9 +34,12 @@ class StockContainer extends React.Component {
 		console.log(`componentDidMount(); this.props.match.params.symbol: ${this.props.match.params.symbol}`);
 
 		this.props.requestStockData(this.props.match.params.symbol);
+
 		this.setState({
 			price: this.props.match.params.latestPrice
-		})
+		});
+
+		this.props.requestChartData(this.props.match.params.symbol);
 	}
 	
 
@@ -44,7 +50,8 @@ class StockContainer extends React.Component {
 
 		// newProps.match.params.symbol is from the URL
 		if (this.props.stockData.reducerStockData.symbol !== newProps.match.params.symbol) {
-			this.props.requestStockData(newProps.match.params.symbol)
+			this.props.requestStockData(newProps.match.params.symbol);
+			this.props.requestChartData(newProps.match.params.symbol);
 		}
 		this.setState({
 			symbol: this.props.stockData.reducerStockData.symbol,
@@ -95,22 +102,30 @@ class StockContainer extends React.Component {
 	render() {
 		return (
 			<div>
+				<div>
 				{
 					this.props.stockData.isFetched &&
 					<Stock stockInfo={this.props.stockData.reducerStockData} />
 				}
-				<form>
-					<FormGroup>
-						<FormControl
-							type="text"
-							value={this.state.quantity}
-							placeholder=""
-							onChange={this.handleChange}
-						/>
-					</FormGroup>
-					<Button className="sell" type="submit" onClick={this.handleSell}>Sell</Button>
-					<Button className="buy" type="submit" onClick={this.handleBuy}>Buy</Button>
-				</form>
+				</div>
+				<div>
+					<StockChart chartInfo={this.props.stockData.reducerStockData} />
+				</div>
+				<div>
+					<form>
+						<FormGroup>
+							<FormControl
+								className="quantity"
+								type="text"
+								value={this.state.quantity}
+								placeholder="Quantity"
+								onChange={this.handleChange}
+							/>
+						</FormGroup>
+						<Button className="sell" type="submit" onClick={this.handleSell}>Sell</Button>
+						<Button className="buy" type="submit" onClick={this.handleBuy}>Buy</Button>
+					</form>
+				</div>
 			</div>
 		)
 	}
@@ -119,12 +134,14 @@ class StockContainer extends React.Component {
 const mapStateToProps = (rootReducerReduxState) => {
 	return {
 		stockData: rootReducerReduxState.stockReducer,
+		chartData: rootReducerReduxState.chartReducer,
 		transactionData: rootReducerReduxState.transactionReducer
 	}
 }
 
 export default connect(mapStateToProps, {
 	requestStockData,
+	requestChartData,
 	executeBuyTransaction,
 	executeSellTransaction
 })(StockContainer);

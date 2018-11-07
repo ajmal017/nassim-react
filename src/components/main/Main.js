@@ -1,6 +1,7 @@
 // Presentation component
 // https://redux.js.org/basics/usagewithreact#presentational-and-container-components
 import React from 'react';
+import './Main.css';
 import { Switch, Route } from 'react-router-dom';
 
 import Home from '../home/Home';
@@ -15,6 +16,7 @@ import StockContainer from '../stock-container/StockContainer';
 export default class Main extends React.Component {
 	render() {
 		return(
+			<div className="main">
 			<Switch>
 				<Route path='/' exact component={Landing} />
 				<Route path='/home' component={Home} />
@@ -25,6 +27,7 @@ export default class Main extends React.Component {
 				<Route path='/portfolio' component={Portfolio} />
 				<Route path='/stock/:symbol' component={StockContainer} />
 			</Switch>
+			</div>
 		)
 	}
 }

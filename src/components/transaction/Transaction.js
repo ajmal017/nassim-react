@@ -7,7 +7,7 @@ export default function Transaction(props) {
 		// https://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-dollars-currency-string-in-javascript
 	return(
 		<div className="box">
-		<h2>Transaction</h2>
+		<h3>Transaction</h3>
 		<p className="date">Date: {props.date}</p>
 		<p>Symbol: {props.symbol}</p>
 		<p>Name: {props.name}</p>

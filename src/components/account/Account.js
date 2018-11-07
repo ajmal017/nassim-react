@@ -33,12 +33,11 @@ export default class Account extends React.Component {
 	render() {
 		return (
 			<div>
-			<h1>My Account</h1>
-			<p>Email: {this.state.email}</p>
-			<p>Password: {this.state.password} (will be masked in production)</p>
+			<h2>My Account</h2>
+			<p>Email: {localStorage.email}</p>
+			<p>Password: {"password"} (will be masked in production)</p>
 			<p>Cash: ${this.state.cash} (currency format)</p>
 			<p>Assets: ${this.state.assets} (currency format)</p>
-			<Portfolio />
 			</div>
 		)
 	}

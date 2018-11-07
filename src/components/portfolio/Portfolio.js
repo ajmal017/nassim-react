@@ -4,7 +4,7 @@ import React from 'react';
 export default function Portfolio(props) {
 		return(
 			<div>
-			<h1>Portfolio</h1>
+			<h2>Portfolio</h2>
 			<p>Value: ${props.value} (currency format)</p>
 			<p>Current Date: {props.currentDate}</p>
 			<p>Day Ago: {props.dayAgo}</p>

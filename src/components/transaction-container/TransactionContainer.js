@@ -29,8 +29,8 @@ class TransactionContainer extends React.Component {
 		})
 		return (
 			<div>
-				<h1>Transaction History</h1>
-				<div className="grid-container">
+				<h2>Transaction History</h2>
+				<div className="container">
 				{transactions}
 				</div>
 			</div>
