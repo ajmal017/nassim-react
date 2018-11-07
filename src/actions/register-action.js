@@ -1,5 +1,5 @@
 import axios from 'axios';
-import ReduxThunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 
 // define actions
 // make post request

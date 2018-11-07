@@ -2,7 +2,6 @@ import React from 'react';
 import './StockContainer.css';
 import Stock from '../stock/Stock';
 import StockChart from '../stock-chart/StockChart';
-import axios from 'axios';
 import { FormGroup, FormControl, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { executeBuyTransaction, executeSellTransaction } from '../../actions/transaction-action';
@@ -100,7 +99,7 @@ class StockContainer extends React.Component {
 	}
 
 	render() {
-		console.log(`this.props.stockData.reducerStockData: ${JSON.stringify(this.props.stockData.reducerStockData)}`)
+
 		return (
 			<div>
 				<div>
@@ -111,8 +110,8 @@ class StockContainer extends React.Component {
 				</div>
 				<div>
 					{
-						this.props.chartData.isFetched && 
-						<StockChart chartInfo={this.props.stockData.reducerStockData} />
+						this.props.chartData.isFetched ? 
+						<StockChart chartInfo={this.props.stockData.reducerStockData} /> : null
 					}
 				</div>
 				<div>

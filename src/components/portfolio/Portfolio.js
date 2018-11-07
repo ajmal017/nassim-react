@@ -2,6 +2,7 @@
 import React from 'react';
 
 export default function Portfolio(props) {
+	debugger
 		return(
 			<div>
 			<h2>Portfolio</h2>

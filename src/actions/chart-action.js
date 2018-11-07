@@ -1,5 +1,5 @@
 import axios from 'axios';
-import ReduxThunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 
 export const REQUEST_CHART_DATA = 'REQUEST_CHART_DATA';
 export function requestChartData(symbol) {

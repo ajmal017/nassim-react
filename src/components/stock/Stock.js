@@ -8,7 +8,7 @@ export default function Stock(props)  {
 		return (
 			<div>
 				<h2>{props.stockInfo.companyName} ({props.stockInfo.symbol})</h2>
-				<p>Price: ${props.stockInfo.latestPrice}</p>
+				<p>Price: ${Number.parseFloat(props.stockInfo.latestPrice).toFixed(2)}</p>
 				<p>Current Date: {props.stockInfo.latestTime}</p>
 			</div>
 		)

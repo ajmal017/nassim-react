@@ -1,6 +1,5 @@
 .header {
 	display: flex;
-	flex-shrink: 0;
 }
 
 h1 {
