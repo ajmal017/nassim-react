@@ -4,6 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal, Tabs, Tab } from 'react-bootstrap';
 
+import './Auth.css';
 import Register from '../register/Register';
 import Login from '../login/Login';
 import { makeLoginPostRequest, logOut } from '../../actions/login-action';
@@ -32,7 +33,7 @@ class Auth extends React.Component {
 
   render() {
     return (
-			<div className="modal-container" style={{ height: 200 }}>
+			<div className="modal-container">
         <Button
           bsStyle="primary"
           bsSize="large"

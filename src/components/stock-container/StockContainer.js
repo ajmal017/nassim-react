@@ -101,7 +101,7 @@ class StockContainer extends React.Component {
 	render() {
 
 		return (
-			<div>
+			<div className="stock-container">
 				<div>
 					{
 						this.props.stockData.isFetched &&

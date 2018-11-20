@@ -11,7 +11,6 @@ import {
 class Landing extends React.Component {
 	render() {
 		if (this.props.loginState.isLoggedIn) {
-      debugger
 			return (
         // same as this.props.history.push()
 				<Redirect to="/home" />
@@ -19,7 +18,8 @@ class Landing extends React.Component {
 		}
 		return (
 			<div>
-				<h1>Landing</h1>
+				<h2>Landing</h2>
+
 			</div>
 		)
 	}

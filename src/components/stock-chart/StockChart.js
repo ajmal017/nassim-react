@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { requestChartData } from '../../actions/chart-action';
-
 import { 
 	XYPlot,
 	XAxis,
@@ -12,20 +10,20 @@ import {
   VerticalGridLines,
 } from 'react-vis';
 
+import { requestChartData } from '../../actions/chart-action';
+import './StockChart.css';
+
 class StockChart extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			chartInfo: props.chartInfo.symbol,
+			chartInfo: props.chartInfo,
 			chartData: []
 		}
 		console.log(`props: ${JSON.stringify(props)}`);
-	}
-	componentDidMount() {
-		// ??? How to get props from StockContainer
-		const symbol = this.props.chartInfo.symbol;
+		const symbol = props.chartInfo.symbol;
 		// quick fix: put axios inside setTimeOut()
-		console.log(`symbol: ${symbol}`);
+		console.log(`StockChart symbol: ${symbol}`);
 		let dataSet = [];
 		axios.get(`https://api.iextrading.com/1.0/stock/${symbol}/chart/1m`)
 				.then(res => {
@@ -38,9 +36,28 @@ class StockChart extends React.Component {
 					});
 					this.setState({
 						chartData: dataSet
-					})
+					});
 				});
 	}
+
+	componentWillReceiveProps(newProps) {
+		let dataSet = [];
+		let newSymbol = newProps.chartInfo.symbol;
+		axios.get(`https://api.iextrading.com/1.0/stock/${newSymbol}/chart/1m`)
+				.then(res => {
+					res.data.map((val, i) => {
+						let entry = {
+							x: i,
+							y: val.close
+						};
+						dataSet.push(entry);
+					});
+					this.setState({
+						chartData: dataSet
+					});
+				});
+	}
+
 	render() {
 		return(
 		<div className="chart">

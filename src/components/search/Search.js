@@ -1,10 +1,12 @@
 // Container component
 import React from 'react';
 import axios from 'axios';
-import { getSymbolsList } from '../../actions/search-action'; // ??? how to use this in constructor?
 import Autocomplete from 'react-autocomplete';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import './Search.css';
+import { getSymbolsList } from '../../actions/search-action'; // ??? how to use this in constructor?
 import { requestSymbolsList } from '../../actions/search-action'
 
 class Search extends React.Component {
@@ -43,7 +45,7 @@ class Search extends React.Component {
 // ??? Search box disappears after this
 	render() {
 		return (
-			<div>
+			<div className="search">
 				<Autocomplete
 					getItemValue={(item) => item.symbol}
 					items={this.state.renderData}

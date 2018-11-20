@@ -11,8 +11,15 @@ class Logout extends React.Component {
 	}
 	// Can bind the doLogout function to `this` while calling as below:
 	render() {
+		const style = {
+
+			margin: '20px'
+		}
 		return (
-			<Button onClick={this.doLogout.bind(this)}>Log out</Button>
+			<Button 
+			onClick={this.doLogout.bind(this)}
+			style={style}
+			>Log out</Button>
 		)
 	}
 }

@@ -1,4 +1,9 @@
-.container {
-	display: flex;
-	flex-wrap: wrap;
+.container>div>table>thead>tr>th {
+	font-size: 1em;
+}
+.container>div>table>tbody>tr>th {
+	font-size: 1em;
+}
+.container>div>table>tbody>tr>td {
+	font-size: 1em;
 }

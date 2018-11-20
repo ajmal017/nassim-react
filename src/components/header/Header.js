@@ -41,13 +41,12 @@ class Header extends React.Component {
 			)
 		} else {
 			return (
-				<div>
+				<div className="header-logged-out">
 					<h1>Nassim</h1>
-					<p>Practice trading stocks in real time</p>
-					<ul>
-						<Auth />
-					</ul>
 					<Search />
+					<ul>
+					<Auth />
+					</ul>
 				</div>
 				)
 		}

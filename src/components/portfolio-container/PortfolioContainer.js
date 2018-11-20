@@ -1,12 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+
+import './PortfolioContainer.css';
 
 export default class PortfolioContainer extends React.Component {
 	constructor(props) {
@@ -41,7 +42,6 @@ export default class PortfolioContainer extends React.Component {
 						this.setState({
 							columns: columns
 						})
-						let entry = [];
 						let row = {};
 						let obj = response.data[key];
 						row.id = id;
@@ -64,6 +64,7 @@ export default class PortfolioContainer extends React.Component {
 	render() {
 		return (
 			<div className="portfolio">
+				<h2>Portfolio</h2>
 			<Paper >
       <Table >
         <TableHead>

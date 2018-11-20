@@ -3,6 +3,13 @@ import React from 'react';
 import './TransactionContainer.css';
 import Transaction from '../transaction/Transaction';
 import { connect } from 'react-redux';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
 import { requestTransactionHistory } from '/Users/Leo/nassim-react/src/actions/transaction-action';
 
 class TransactionContainer extends React.Component {
@@ -10,28 +17,58 @@ class TransactionContainer extends React.Component {
 		super(props)
 		this.state = {
 			transactions: [],
-			account: localStorage.getItem('userId')
-			// ??? is this being used at all?
+			account: localStorage.getItem('userId'),
+			rows: []
 		}
 	}
 
 	componentDidMount() {
+		debugger
 		this.props.requestTransactionHistory();
 	}
 	
 	render() {
+		const rows = []
 		const transactions = this.props.transactionData.reducerTransactionData.map((entry, index) => {
-			return (
-			<div key={index}>
-				<Transaction key={index} index={index} {...entry} />
-			</div>
-			)
-		})
+			entry.id = index;
+			rows.push(entry);
+		});
 		return (
 			<div>
 				<h2>Transaction History</h2>
 				<div className="container">
-				{transactions}
+				<Paper >
+      <Table >
+        <TableHead>
+          <TableRow>
+            <TableCell>Date</TableCell>
+            <TableCell numeric>Name</TableCell>
+            <TableCell numeric>Symbol</TableCell>
+            <TableCell numeric>Type</TableCell>
+            <TableCell numeric>Price</TableCell>
+            <TableCell numeric>Shares</TableCell>
+            <TableCell numeric>Total</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map(row => {
+            return (
+              <TableRow key={row.id}>
+                <TableCell component="th" scope="row">
+                  {row.date}
+                </TableCell>
+                <TableCell numeric>{row.name}</TableCell>
+                <TableCell numeric>{row.symbol}</TableCell>
+                <TableCell numeric>{row.type}</TableCell>
+                <TableCell numeric>{row.price}</TableCell>
+                <TableCell numeric>{row.quantity}</TableCell>
+                <TableCell numeric>{row.totalValue.toFixed(2)}</TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </Paper>
 				</div>
 			</div>
 		)

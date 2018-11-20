@@ -7,7 +7,7 @@ export default class About extends React.Component {
 		return (
 			<div>
 				<h2>About</h2>
-				<p>Nassim is a mock stock trading app using live market data.</p>
+				<p>Nassim is a demo app for trading stocks.</p>
 			</div>
 		)
 	}
