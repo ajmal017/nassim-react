@@ -6,8 +6,6 @@ import './index.css';
 import App from './components/app/App';
 import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
-import dotenv from 'dotenv';
-dotenv.config();
 
 // Provider provides global state of all components to App
 // Provider is the only way to use store
