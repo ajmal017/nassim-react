@@ -10,7 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import { requestTransactionHistory } from '/Users/Leo/nassim-react/src/actions/transaction-action';
+import { requestTransactionHistory } from '../../actions/transaction-action';
 
 class TransactionContainer extends React.Component {
 	constructor(props) {
