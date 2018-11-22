@@ -5,7 +5,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import {
   makeRegisterPostRequest
-} from '/Users/Leo/nassim-react/src/actions/register-action.js';
+} from '../../actions/register-action.js';
 import { makeLoginPostRequest } from '../../actions/login-action';
 
 class Register extends React.Component {
