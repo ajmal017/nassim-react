@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 export const MAKE_REGISTER_POST_REQUEST = 'MAKE_REGISTER_POST_REQUEST';
 export function makeRegisterPostRequest(registerRequestData) {
 	return function (dispatch) {
-    axios.post('http://localhost:8080/auth/register', registerRequestData)
+    axios.post('https://nassim.herokuapp.com/auth/register', registerRequestData)
     .then(res => {
       console.log(JSON.stringify(res.data.message));
       // dispatch response to reducer
