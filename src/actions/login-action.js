@@ -6,7 +6,7 @@ const MAKE_LOGIN_POST_REQUEST = 'MAKE_LOGIN_POST_REQUEST';
 // export action function
 export function makeLoginPostRequest(loginRequestData) {
 	return function (dispatch) {
-		axios.post('http://localhost:8080/auth/login', loginRequestData)
+		axios.post('https://nassim.herokuapp.com/auth/login', loginRequestData)
 		.then(res => {
 			console.log(`${JSON.stringify(res.data.message)}: ${JSON.stringify(res.data.data.token)}`);
 			window.localStorage.setItem('email', res.data.data.email);

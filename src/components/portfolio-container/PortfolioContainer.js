@@ -28,7 +28,7 @@ export default class PortfolioContainer extends React.Component {
 			columns: []
 		};
 		
-		axios.get(`http://localhost:8080/portfolio/${localStorage.token}`, {
+		axios.get(`https://nassim.herokuapp.com/portfolio/${localStorage.token}`, {
 			account: localStorage.getItem('userId')
 		})
 				.then(response => {

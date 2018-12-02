@@ -5,7 +5,7 @@ import axios from 'axios';
 export const REQUEST_TRANSACTION_HISTORY = 'REQUEST_TRANSACTION_HISTORY';
 export function requestTransactionHistory() {
 	return function (dispatch) {
-		axios.get(`http://localhost:8080/transaction/all/${localStorage.getItem('token')}`,
+		axios.get(`https://nassim.herokuapp.com/transaction/all/${localStorage.getItem('token')}`,
 		{
 			account: localStorage.getItem('userId')
 		})
@@ -60,7 +60,7 @@ export const EXECUTE_BUY_TRANSACTION = 'EXECUTE_BUY_TRANSACTION';
 export function executeBuyTransaction(buyRequestData) {
 	console.log('Execute `Buy` transaction inside Action.');
 	return function (dispatch) {
-		axios.post(`http://localhost:8080/transaction/all/${localStorage.getItem('token')}`, buyRequestData)
+		axios.post(`https://nassim.herokuapp.com/transaction/all/${localStorage.getItem('token')}`, buyRequestData)
 			.then(response => {
 				dispatch(announceTransactionCompletion(response.data));
 			})
@@ -80,7 +80,7 @@ export const EXECUTE_SELL_TRANSACTION = 'EXECUTE_SELL_TRANSACTION';
 export function executeSellTransaction(sellRequestData) {
 	console.log('Execute `Sell` transaction inside Action.')
 	return function (dispatch) {
-	axios.post(`http://localhost:8080/transaction/all/${localStorage.getItem('token')}`, sellRequestData)
+	axios.post(`https://nassim.herokuapp.com/transaction/all/${localStorage.getItem('token')}`, sellRequestData)
 		.then(response => {
 			dispatch(announceTransactionCompletion(response.data))
 		})
